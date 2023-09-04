@@ -1,6 +1,6 @@
 import Logo from "@/components/Logo";
 import Navbar from "../Navbar";
-import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 export default function Header() {
   return (
@@ -10,9 +10,9 @@ export default function Header() {
           <Logo />
         </div>
         <div className="flex">
+          <ThemeSwitcher />
           <div>Search</div>
           <div>User</div>
-          <ThemeSwitcher />
         </div>
       </div>
       <Navbar />
