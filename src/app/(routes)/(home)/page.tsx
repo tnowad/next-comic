@@ -1,3 +1,9 @@
 export default function Page() {
-  return <main>Home</main>;
+  return (
+    <>
+      <section>
+        <div className="container mx-auto">Banner</div>
+      </section>
+    </>
+  );
 }
