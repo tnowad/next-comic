@@ -1,5 +1,5 @@
+import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Header from "./components/Header";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -7,11 +7,11 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <>
-      <div className="flex flex-col min-h-screen">
-        <Header />
-        <main className="flex-1">{children}</main>
+      <main className="container mx-auto">
+        <Navbar />
+        {children}
         <Footer />
-      </div>
+      </main>
     </>
   );
 }
