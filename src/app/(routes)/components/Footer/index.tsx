@@ -1,6 +1,5 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { Link } from "@nextui-org/react";
 import { usePathname } from "next/navigation";
 
