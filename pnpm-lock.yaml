@@ -11,6 +11,15 @@ dependencies:
   '@nextui-org/react':
     specifier: ^2.1.10
     version: 2.1.10(@types/react@18.2.21)(framer-motion@10.16.3)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.3)
+  '@react-aria/focus':
+    specifier: ^3.14.0
+    version: 3.14.0(react@18.2.0)
+  '@react-aria/interactions':
+    specifier: ^3.17.0
+    version: 3.17.0(react@18.2.0)
+  '@react-aria/utils':
+    specifier: ^3.19.0
+    version: 3.19.0(react@18.2.0)
   '@types/node':
     specifier: 20.5.9
     version: 20.5.9
@@ -23,6 +32,9 @@ dependencies:
   autoprefixer:
     specifier: 10.4.15
     version: 10.4.15(postcss@8.4.29)
+  clsx:
+    specifier: ^2.0.0
+    version: 2.0.0
   eslint:
     specifier: 8.48.0
     version: 8.48.0
@@ -2661,6 +2673,11 @@ packages:
 
   /clsx@1.2.1:
     resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
+
+  /clsx@2.0.0:
+    resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
     engines: {node: '>=6'}
     dev: false
 
