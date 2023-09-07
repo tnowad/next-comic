@@ -7,7 +7,7 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <>
-      <main className="container mx-auto">
+      <main className="relative flex flex-col">
         <Navbar />
         {children}
         <Footer />
