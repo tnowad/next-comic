@@ -8,7 +8,7 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <>
       <main className="relative flex flex-col">
-        <Navbar />
+        <Navbar routes={[]} mobileRoutes={[]} />
         {children}
         <Footer />
       </main>
