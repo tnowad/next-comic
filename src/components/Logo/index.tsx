@@ -1,14 +1,21 @@
-import Link from "next/link";
+import { IconSvgProps } from "@/types/svg";
+import SmallLogo from "./SmallLogo";
+import LargeLogo from "./LargeLogo";
+import { LogoProps } from "./LogoProps";
 
-interface LogoProps {
-  title?: string;
-  href?: string;
-}
+export default function Logo({ auto, small, ...props }: LogoProps) {
+  if (auto) {
+    return (
+      <div>
+        <SmallLogo auto={auto} {...props} />
+        <LargeLogo auto={auto} {...props} />
+      </div>
+    );
+  }
 
-export default function Logo({ title = "NextComic", href = "/" }: LogoProps) {
-  return (
-    <Link href={href}>
-      <span className="font-bold">{title}</span>
-    </Link>
-  );
+  if (small) {
+    return <SmallLogo {...props} />;
+  }
+
+  return <LargeLogo auto={auto} {...props} />;
 }
