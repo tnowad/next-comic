@@ -29,7 +29,7 @@ function createRandomGenre(): Genre {
   return {
     id: faker.string.uuid(),
     slug: faker.lorem.slug(),
-    title: faker.lorem.lines({ min: 1, max: 4 }),
+    title: faker.lorem.word(),
   };
 }
 
@@ -38,7 +38,10 @@ export function createRandomComic(): Comic {
     id: faker.string.uuid(),
     title: faker.word.words({ count: { min: 3, max: 20 } }),
     authors: faker.helpers.uniqueArray(createRandomAuthor, 3),
-    description: undefined,
+    description: {
+      characters: [],
+      description: faker.lorem.paragraphs(),
+    },
     chapters: faker.helpers.uniqueArray(createRandomChapter, 50),
     totalViews: faker.number.int({ min: 0, max: 100000000 }),
     totalComments: faker.number.int({ min: 0, max: 100000000 }),
@@ -46,6 +49,7 @@ export function createRandomComic(): Comic {
     totalFollows: faker.number.int({ min: 0, max: 100000000 }),
     genres: faker.helpers.uniqueArray(createRandomGenre, 10),
     coverImage: faker.image.url(),
+    updatedAt: faker.date.past(),
     status: faker.helpers.arrayElement<ComicStatus>([
       "ongoing",
       "completed",
