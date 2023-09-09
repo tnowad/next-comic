@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import type { Comic, Author } from "@/types/comic";
+import type { Comic, Author, ComicStatus } from "@/types/comic";
 
 function createRandomAuthor(): Author {
   return {
@@ -13,7 +13,7 @@ function createRandomAuthor(): Author {
   };
 }
 
-function createRandomComic(): Comic {
+export function createRandomComic(): Comic {
   return {
     id: faker.string.uuid(),
     title: faker.word.words({ count: { min: 3, max: 20 } }),
@@ -21,7 +21,11 @@ function createRandomComic(): Comic {
     description: undefined,
     chapters: [],
     genres: [],
-    coverImage: "",
-    status: "ongoing",
+    coverImage: faker.image.url(),
+    status: faker.helpers.arrayElement<ComicStatus>([
+      "ongoing",
+      "completed",
+      "cancelled",
+    ]),
   };
 }

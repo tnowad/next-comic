@@ -37,7 +37,7 @@ export interface Author {
   description: string;
 }
 
-type ComicStatus = "ongoing" | "completed" | "cancelled";
+export type ComicStatus = "ongoing" | "completed" | "cancelled";
 
 export interface Comic {
   id: string;
