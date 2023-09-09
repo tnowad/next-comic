@@ -1,13 +1,6 @@
 "use client";
-
-import {
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Image,
-  Link,
-} from "@nextui-org/react";
+import NextLink from "next/link";
+import { Card, CardBody, CardHeader, Image, Link } from "@nextui-org/react";
 interface Chapter {
   id: string;
   title: string;
@@ -18,6 +11,7 @@ interface ComicCardProps {
   description?: string;
   imageUrl?: string;
   chapters?: Chapter[];
+  variant?: "default" | "";
 }
 const chapter = { id: "1", title: "Chapter 1", link: "#" };
 const demoChapter = [...[chapter], ...[chapter], ...[chapter]];
@@ -28,25 +22,25 @@ export default function ComicCard({
   chapters = demoChapter,
 }: ComicCardProps) {
   return (
-    <Card className="" radius="sm">
-      <CardHeader className="overflow-visible p-0">
-        <Image alt={title} src={imageUrl} />
+    <Card radius="sm" className="grid grid-cols-[30%,_70%] sx:flex">
+      <CardHeader className="overflow-visible sx:justify-center p-0">
+        <Image className="w-fit" alt={title} src={imageUrl} />
       </CardHeader>
-      <CardBody className="justify-center p-1">
-        <b className="text-center">{title}</b>
-      </CardBody>
-      <CardFooter className="flex-col justify-start py-0">
+      <CardBody className="sx:justify-center p-1 w-full">
+        <NextLink href={`/comics/${title}/${123}`}>
+          <b className="text-center">{title}</b>
+        </NextLink>
         {chapters.slice(-3).map((chapter) => (
           <Link
             color="foreground"
             className="text-small justify-between w-full"
             key={chapter.id}
           >
-            <b>{chapter.title}</b>
-            <p>{"1 gio truoc"}</p>
+            <p>{chapter.title}</p>
+            <p className="text-foreground">{"1 giờ trước"}</p>
           </Link>
         ))}
-      </CardFooter>
+      </CardBody>
     </Card>
   );
 }
