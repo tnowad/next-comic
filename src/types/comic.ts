@@ -3,7 +3,7 @@ interface Genre {
   title: string;
 }
 
-interface Chapter {
+export interface Chapter {
   id: string;
   number: number;
   title: string;
