@@ -18,7 +18,8 @@ function createRandomChapter(): Chapter {
     id: faker.string.uuid(),
     number: faker.number.int({ min: 0 }),
     title: faker.helpers.regexpStyleStringParse("Chapter [1-1000]"),
-    view: faker.number.int({ min: 0 }),
+    totalViews: faker.number.int({ min: 0 }),
+    updatedAt: faker.date.past(),
   };
 }
 
@@ -29,6 +30,9 @@ export function createRandomComic(): Comic {
     authors: faker.helpers.uniqueArray(createRandomAuthor, 3),
     description: undefined,
     chapters: faker.helpers.uniqueArray(createRandomChapter, 50),
+    totalViews: faker.number.int({ min: 0, max: 100000000 }),
+    totalComments: faker.number.int({ min: 0, max: 100000000 }),
+    totalFollows: faker.number.int({ min: 0, max: 100000000 }),
     genres: [],
     coverImage: faker.image.url(),
     status: faker.helpers.arrayElement<ComicStatus>([

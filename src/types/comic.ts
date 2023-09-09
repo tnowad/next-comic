@@ -7,11 +7,15 @@ export interface Chapter {
   id: string;
   number: number;
   title: string;
-  view: number;
+  totalViews: number;
+  updatedAt: Date;
 }
 
 interface ChapterPreview
-  extends Pick<Chapter, "id" | "number" | "title" | "view"> {}
+  extends Pick<
+    Chapter,
+    "id" | "number" | "title" | "totalViews" | "updatedAt"
+  > {}
 
 interface Character {
   id: string;
@@ -42,6 +46,9 @@ export type ComicStatus = "ongoing" | "completed" | "cancelled";
 export interface Comic {
   id: string;
   title: string;
+  totalFollows: number;
+  totalComments: number;
+  totalViews: number;
   authors: Author[];
   description?: ComicDescription;
   chapters: ChapterPreview[];
