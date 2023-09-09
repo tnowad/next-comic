@@ -35,7 +35,7 @@ export default function ComicCard({
             src={comic.coverImage}
           />
           <div className="w-full h-fit bg-black/50 absolute -translate-y-full z-1">
-            <p className="flex justify-center items-center gap-1 text-[13px] py-1">
+            <p className="text-white flex justify-center items-center gap-1 text-[13px] py-1">
               <Icon icon="fa:eye" />
               {formatNumber(comic.totalViews)}
               <Icon icon="fa6-regular:message" />

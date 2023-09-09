@@ -25,6 +25,7 @@ import clsx from "clsx";
 import { useRef, useState } from "react";
 import { useIsMounted } from "@/hooks/use-is-mounted";
 import { Icon } from "@iconify/react";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
 interface NavbarProps {
   routes: Route[];
@@ -74,6 +75,9 @@ export default function Navbar({ routes, mobileRoutes }: NavbarProps) {
           </NextLink>
         </NavbarBrand>
         <NavbarItem className="w-full"></NavbarItem>
+        <NavbarItem>
+          <ThemeSwitcher />
+        </NavbarItem>
         <NavbarItem className="hidden lg:flex">{searchButton}</NavbarItem>
       </NavbarContent>
       <NavbarMenu></NavbarMenu>
