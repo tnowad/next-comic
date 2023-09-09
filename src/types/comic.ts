@@ -1,14 +1,3 @@
-interface User {
-  id: string;
-  name: string;
-  avatarImage: string;
-  birthday: string;
-  bio: string;
-  role: string;
-}
-
-interface UserPreview extends Pick<User, "id" | "name" | "avatarImage"> {}
-
 interface Genre {
   id: string;
   title: string;
@@ -21,6 +10,9 @@ interface Chapter {
   view: number;
 }
 
+interface ChapterPreview
+  extends Pick<Chapter, "id" | "number" | "title" | "view"> {}
+
 interface Character {
   id: string;
   name: string;
@@ -32,26 +24,33 @@ interface Character {
 
 interface ComicDescription {
   characters: Character[];
-}
-
-interface Author {
-  id: string;
-  name: string;
-  avatarImage: string;
-  birthday: string;
   description: string;
 }
 
-interface Comic {
+export interface Author {
+  id: string;
+  role: string;
+  sex: string;
+  name: string;
+  avatarImage: string;
+  birthday: Date;
+  description: string;
+}
+
+type ComicStatus = "ongoing" | "completed" | "cancelled";
+
+export interface Comic {
   id: string;
   title: string;
-  author: Author;
-  description: ComicDescription;
-  chapters: Chapter[];
+  authors: Author[];
+  description?: ComicDescription;
+  chapters: ChapterPreview[];
   genres: Genre[];
   coverImage: string;
-  status: string;
+  status: ComicStatus;
 }
+
+interface ComicPreview extends Comic {}
 
 interface Comment {
   id: string;
