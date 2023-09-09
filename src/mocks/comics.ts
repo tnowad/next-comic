@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import type { Comic, Author, ComicStatus, Chapter } from "@/types/comic";
+import type { Comic, Author, ComicStatus, Chapter, Genre } from "@/types/comic";
 
 function createRandomAuthor(): Author {
   return {
@@ -23,6 +23,13 @@ function createRandomChapter(): Chapter {
   };
 }
 
+function createRandomGenre(): Genre {
+  return {
+    id: faker.string.uuid(),
+    title: faker.lorem.lines({ min: 1, max: 4 }),
+  };
+}
+
 export function createRandomComic(): Comic {
   return {
     id: faker.string.uuid(),
@@ -33,7 +40,7 @@ export function createRandomComic(): Comic {
     totalViews: faker.number.int({ min: 0, max: 100000000 }),
     totalComments: faker.number.int({ min: 0, max: 100000000 }),
     totalFollows: faker.number.int({ min: 0, max: 100000000 }),
-    genres: [],
+    genres: faker.helpers.uniqueArray(createRandomGenre, 10),
     coverImage: faker.image.url(),
     status: faker.helpers.arrayElement<ComicStatus>([
       "ongoing",
