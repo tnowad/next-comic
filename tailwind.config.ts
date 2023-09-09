@@ -1,6 +1,6 @@
 import type { Config } from "tailwindcss";
+import { nextui } from "@nextui-org/react";
 
-const { nextui } = require("@nextui-org/react");
 const config: Config = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -9,10 +9,19 @@ const config: Config = {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        sx: "370px",
+        sm: "576px",
+        md: "768px",
+        lg: "992px",
+        xl: "1200px",
+      },
+    },
   },
   darkMode: "class",
 
   plugins: [nextui()],
 };
+
 export default config;
