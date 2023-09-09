@@ -1,6 +1,7 @@
 export interface Genre {
   id: string;
   title: string;
+  slug: string;
 }
 
 export interface Chapter {
@@ -9,12 +10,13 @@ export interface Chapter {
   title: string;
   totalViews: number;
   updatedAt: Date;
+  slug: string;
 }
 
 interface ChapterPreview
   extends Pick<
     Chapter,
-    "id" | "number" | "title" | "totalViews" | "updatedAt"
+    "id" | "number" | "title" | "totalViews" | "slug" | "updatedAt"
   > {}
 
 interface Character {
@@ -39,12 +41,14 @@ export interface Author {
   avatarImage: string;
   birthday: Date;
   description: string;
+  slug: string;
 }
 
 export type ComicStatus = "ongoing" | "completed" | "cancelled";
 
 export interface Comic {
   id: string;
+  slug: string;
   title: string;
   totalFollows: number;
   totalComments: number;

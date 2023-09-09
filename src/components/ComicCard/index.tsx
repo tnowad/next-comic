@@ -50,7 +50,7 @@ export default function ComicCard({
         <Link
           as={NextLink}
           color="foreground"
-          href={`/comics/${comic.title}/${comic.id}`}
+          href={`/comics/${comic.slug}/${comic.id}`}
         >
           <p className="capitalize whitespace-break-spaces">{truncatedTitle}</p>
         </Link>
@@ -61,7 +61,7 @@ export default function ComicCard({
               color="foreground"
               className="flex text-small justify-between w-full visited:text-gray-400"
               key={chapter.id}
-              href={`/chapter/${comic.title}/${chapter.id}`}
+              href={`/chapter/${comic.slug}/${chapter.id}`}
             >
               <p>{chapter.title}</p>
               <p>{format(chapter.updatedAt)}</p>
