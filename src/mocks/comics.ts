@@ -1,5 +1,12 @@
 import { faker } from "@faker-js/faker";
-import type { Comic, Author, ComicStatus, Chapter, Genre, Character } from "@/types/comic";
+import type {
+  Comic,
+  Author,
+  ComicStatus,
+  Chapter,
+  Genre,
+  Character,
+} from "@/types/comic";
 
 function createRandomAuthor(): Author {
   return {
@@ -39,9 +46,9 @@ function createRandomCharacter(): Character {
     name: faker.person.fullName(),
     birthday: faker.date.birthdate(),
     description: faker.lorem.paragraphs(),
-    role: faker.helpers.arrayElement(['main', 'wife']),
+    role: faker.helpers.arrayElement(["main", "wife"]),
     coverImage: faker.image.url(),
-  }
+  };
 }
 
 export function createRandomComic(): Comic {

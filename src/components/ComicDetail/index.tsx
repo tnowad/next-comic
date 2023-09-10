@@ -2,10 +2,22 @@
 
 import { Comic } from "@/types/comic";
 import { format } from "timeago.js";
-import { Button, Image, Link, Tooltip, Divider, Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from "@nextui-org/react";
+import {
+  Button,
+  Image,
+  Link,
+  Tooltip,
+  Divider,
+  Table,
+  TableHeader,
+  TableColumn,
+  TableBody,
+  TableRow,
+  TableCell,
+} from "@nextui-org/react";
 import NextLink from "next/link";
 import NextImage from "next/image";
-import { Icon } from '@iconify/react';
+import { Icon } from "@iconify/react";
 import { formatNumber } from "@/utils/number";
 import { useRouter } from "next/navigation";
 
@@ -14,8 +26,7 @@ interface ComicDetailProps {
 }
 
 export default function ComicDetail({ comic }: ComicDetailProps) {
-
-  const router = useRouter()
+  const router = useRouter();
 
   const renderAuthors = () => {
     return comic.authors.map((author, index) => (
@@ -38,7 +49,6 @@ export default function ComicDetail({ comic }: ComicDetailProps) {
   const renderGenres = () => {
     return comic.genres.map((genre, index) => (
       <span key={genre.id}>
-
         <Tooltip content={<p className="capitalize">{genre.title}</p>}>
           <Link
             as={NextLink}
@@ -76,40 +86,68 @@ export default function ComicDetail({ comic }: ComicDetailProps) {
         <div className="col-span-8">
           <div className="w-full">
             <p>
-              <span className="inline-flex items-center w-36"><Icon className="inline" icon="mdi:user" />Authors:</span>
+              <span className="inline-flex w-36 items-center">
+                <Icon className="inline" icon="mdi:user" />
+                Authors:
+              </span>
               {renderAuthors()}
             </p>
             <p>
-              <span className="inline-flex items-center w-36" ><Icon className="inline" icon="iconamoon:category-light" />Genres:</span>
-              {renderGenres()}</p>
+              <span className="inline-flex w-36 items-center">
+                <Icon className="inline" icon="iconamoon:category-light" />
+                Genres:
+              </span>
+              {renderGenres()}
+            </p>
             <p>
-              <span className="inline-flex items-center w-36" ><Icon className="inline" icon="mdi:eye-outline" />Total views:</span>
-              {comic.totalViews.toLocaleString()}</p>
+              <span className="inline-flex w-36 items-center">
+                <Icon className="inline" icon="mdi:eye-outline" />
+                Total views:
+              </span>
+              {comic.totalViews.toLocaleString()}
+            </p>
             <p>
-              <span className="inline-flex items-center w-36" ><Icon className="inline" icon="material-symbols:star" />Rating:</span>
+              <span className="inline-flex w-36 items-center">
+                <Icon className="inline" icon="material-symbols:star" />
+                Rating:
+              </span>
               {comic.averageRating.toFixed(2)}/5 -{" "}
               {comic.totalRating.toLocaleString()}
             </p>
             <p>
-              <span className="inline-flex items-center w-36" ><Icon className="inline" icon="mdi:heart" />Total followers:</span>
+              <span className="inline-flex w-36 items-center">
+                <Icon className="inline" icon="mdi:heart" />
+                Total followers:
+              </span>
               {comic.totalFollows.toLocaleString()}
             </p>
           </div>
-          <div className="inline-flex flex-wrap gap-2 mt-3">
-            <Button className="text-white" color="success">Follow</Button>
-            <Button className="text-white" color="warning">Start</Button>
-            <Button className="text-white" color="warning">Latest Chapter</Button>
-            <Button className="text-white" color="danger">Continuous</Button>
+          <div className="mt-3 inline-flex flex-wrap gap-2">
+            <Button className="text-white" color="success">
+              Follow
+            </Button>
+            <Button className="text-white" color="warning">
+              Start
+            </Button>
+            <Button className="text-white" color="warning">
+              Latest Chapter
+            </Button>
+            <Button className="text-white" color="danger">
+              Continuous
+            </Button>
           </div>
         </div>
       </div>
       <div>
-        <p className="flex items-center text-primary"><Icon icon="dashicons:text" />Description</p>
+        <p className="flex items-center text-primary">
+          <Icon icon="dashicons:text" />
+          Description
+        </p>
         <Divider className="bg-primary" />
         {comic.description?.description}
       </div>
       <div className="hidden">
-        {comic.description?.characters.map(character => (
+        {comic.description?.characters.map((character) => (
           <div key={character.id}>
             <div>
               <Image
@@ -131,24 +169,35 @@ export default function ComicDetail({ comic }: ComicDetailProps) {
         ))}
       </div>
       <div>
-        <p className="flex items-center text-primary"><Icon icon="ic:baseline-list" />Chapters</p>
+        <p className="flex items-center text-primary">
+          <Icon icon="ic:baseline-list" />
+          Chapters
+        </p>
         <Divider className="bg-primary" />
-        <Table selectionMode="single" removeWrapper >
-          <TableHeader >
-            <TableColumn >CHAPTERS</TableColumn>
-            <TableColumn >UPDATE</TableColumn>
-            <TableColumn >VIEWS</TableColumn>
+        <Table selectionMode="single" removeWrapper>
+          <TableHeader>
+            <TableColumn>CHAPTERS</TableColumn>
+            <TableColumn>UPDATE</TableColumn>
+            <TableColumn>VIEWS</TableColumn>
           </TableHeader>
           <TableBody>
-            {comic.chapters.map(chapter => (
+            {comic.chapters.map((chapter) => (
               <TableRow key={chapter.id}>
                 <TableCell>
-                  <Link as={NextLink} className="hover:text-primary text-foreground visited:text-gray-500" href={`/chapter/${chapter.slug}/${chapter.id}`}>
+                  <Link
+                    as={NextLink}
+                    className="text-foreground visited:text-gray-500 hover:text-primary"
+                    href={`/chapter/${chapter.slug}/${chapter.id}`}
+                  >
                     {chapter.title}
                   </Link>
                 </TableCell>
-                <TableCell className="text-gray-500">{format(chapter.updatedAt)}</TableCell>
-                <TableCell className="text-gray-500">{formatNumber(chapter.totalViews)}</TableCell>
+                <TableCell className="text-gray-500">
+                  {format(chapter.updatedAt)}
+                </TableCell>
+                <TableCell className="text-gray-500">
+                  {formatNumber(chapter.totalViews)}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
