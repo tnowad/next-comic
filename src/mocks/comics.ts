@@ -50,6 +50,8 @@ export function createRandomComic(): Comic {
     genres: faker.helpers.uniqueArray(createRandomGenre, 10),
     coverImage: faker.image.url(),
     updatedAt: faker.date.past(),
+    totalRating: faker.number.int({ min: 0, max: 100000000 }),
+    averageRating: faker.number.float({ min: 0, max: 5 }),
     status: faker.helpers.arrayElement<ComicStatus>([
       "ongoing",
       "completed",
