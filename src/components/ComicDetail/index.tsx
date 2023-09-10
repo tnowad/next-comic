@@ -5,6 +5,7 @@ import { format } from "timeago.js";
 import { Button, Image, Link, Tooltip } from "@nextui-org/react";
 import NextLink from "next/link";
 import NextImage from "next/image";
+import { Icon } from '@iconify/react';
 
 interface ComicDetailProps {
   comic: Comic;
@@ -18,13 +19,13 @@ export default function ComicDetail({ comic }: ComicDetailProps) {
           <Link
             as={NextLink}
             href={`/authors/${author.slug}/${author.id}`}
-            color="foreground"
+            color="primary"
             className="capitalize"
           >
             {author.name}
           </Link>
         </Tooltip>
-        {index !== comic.authors.length - 1 && ", "}
+        {index !== comic.authors.length - 1 && " - "}
       </span>
     ));
   };
@@ -32,21 +33,24 @@ export default function ComicDetail({ comic }: ComicDetailProps) {
   const renderGenres = () => {
     return comic.genres.map((genre, index) => (
       <span key={genre.id}>
-        <Link
-          as={NextLink}
-          href={`/genres/${genre.slug}/${genre.id}`}
-          color="foreground"
-          className="capitalize"
-        >
-          {genre.title}
-        </Link>
-        {index !== comic.genres.length - 1 && ", "}
+
+        <Tooltip content={<p className="capitalize">{genre.title}</p>}>
+          <Link
+            as={NextLink}
+            href={`/genres/${genre.slug}/${genre.id}`}
+            color="primary"
+            className="capitalize"
+          >
+            {genre.title}
+          </Link>
+        </Tooltip>
+        {index !== comic.genres.length - 1 && " - "}
       </span>
     ));
   };
 
   return (
-    <div>
+    <div className="flex w-full flex-col ">
       <div className="w-full">
         <h1 className="text-center text-xl uppercase">{comic.title}</h1>
         <p className="text-center italic">
@@ -65,21 +69,32 @@ export default function ComicDetail({ comic }: ComicDetailProps) {
           />
         </div>
         <div className="col-span-8">
-          <p>Authors: {renderAuthors()}</p>
-          <p>Genres: {renderGenres()}</p>
-          <p>Total views: {comic.totalViews}</p>
-          <p>
-            Rating: {comic.averageRating.toFixed(2)}/5 -{" "}
-            {comic.totalRating.toLocaleString()}
-          </p>
-          <p>
-            <Button>Follow</Button>
-            {comic.totalFollows.toLocaleString()} Followers
-          </p>
-          <div>
-            <Button>Start</Button>
-            <Button>Latest Chapter</Button>
-            <Button>Continuous</Button>
+          <div className="w-full">
+            <p>
+              <span className="inline-flex items-center w-36"><Icon className="inline" icon="mdi:user" />Authors:</span>
+              {renderAuthors()}
+            </p>
+            <p>
+              <span className="inline-flex items-center w-36" ><Icon className="inline" icon="iconamoon:category-light" />Genres:</span>
+              {renderGenres()}</p>
+            <p>
+              <span className="inline-flex items-center w-36" ><Icon className="inline" icon="mdi:eye-outline" />Total views:</span>
+              {comic.totalViews.toLocaleString()}</p>
+            <p>
+              <span className="inline-flex items-center w-36" ><Icon className="inline" icon="material-symbols:star" />Rating:</span>
+              {comic.averageRating.toFixed(2)}/5 -{" "}
+              {comic.totalRating.toLocaleString()}
+            </p>
+            <p>
+              <span className="inline-flex items-center w-36" ><Icon className="inline" icon="mdi:heart" />Total followers:</span>
+              {comic.totalFollows.toLocaleString()}
+            </p>
+          </div>
+          <div className="inline-flex flex-wrap gap-2 mt-3">
+            <Button className="text-white" color="success">Follow</Button>
+            <Button className="text-white" color="warning">Start</Button>
+            <Button className="text-white" color="warning">Latest Chapter</Button>
+            <Button className="text-white" color="danger">Continuous</Button>
           </div>
         </div>
       </div>
