@@ -10,7 +10,7 @@ export default async function ComicList({}: ComicListProps) {
   const comics = await getAllComic();
   console.log(comics);
   return (
-    <div className="grid grid-cols-1 sx:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+    <div className="grid grid-cols-1 gap-3 sx:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4">
       {comics.map((comic) => (
         <ComicCard comic={comic} key={comic.id} />
       ))}

@@ -32,18 +32,18 @@ export default function ComicCard({
 
   return (
     <Card radius="sm" className="grid grid-cols-[30%,_70%] sx:flex">
-      <CardHeader className="overflow-visible sx:justify-center p-0">
+      <CardHeader className="overflow-visible p-0 sx:justify-center">
         <div className="relative">
           <Image
             as={NextImage}
-            className="object-cover h-[250px] w-full z-0"
+            className="z-0 h-[250px] w-full object-cover"
             width={200}
             height={250}
             alt={comic.title}
             src={comic.coverImage}
           />
-          <div className="w-full h-fit bg-black/50 absolute -translate-y-full z-1">
-            <p className="text-white flex justify-center items-center gap-1 text-[13px] py-1">
+          <div className="z-1 absolute h-fit w-full -translate-y-full bg-black/50">
+            <p className="flex items-center justify-center gap-1 py-1 text-[13px] text-white">
               <Icon icon="fa:eye" />
               {formatNumber(comic.totalViews)}
               <Icon icon="fa6-regular:message" />
@@ -54,7 +54,7 @@ export default function ComicCard({
           </div>
         </div>
       </CardHeader>
-      <CardBody className="p-1 w-full flex flex-col justify-between">
+      <CardBody className="flex w-full flex-col justify-between p-1">
         <Tooltip
           content={
             <div className="w-[400px]">
@@ -63,7 +63,7 @@ export default function ComicCard({
                 color="foreground"
                 href={`/comics/${comic.slug}/${comic.id}`}
               >
-                <p className="capitalize whitespace-break-spaces">
+                <p className="whitespace-break-spaces capitalize">
                   {comic.title}
                 </p>
               </Link>
@@ -71,7 +71,7 @@ export default function ComicCard({
                 <div className="col-span-5">
                   <Image
                     as={NextImage}
-                    className="object-cover h-[250px] w-full z-0"
+                    className="z-0 h-[250px] w-full object-cover"
                     width={200}
                     height={250}
                     alt={comic.title}
@@ -132,7 +132,7 @@ export default function ComicCard({
             color="foreground"
             href={`/comics/${comic.slug}/${comic.id}`}
           >
-            <p className="capitalize whitespace-break-spaces">
+            <p className="whitespace-break-spaces capitalize">
               {truncatedTitle}
             </p>
           </Link>
@@ -142,7 +142,7 @@ export default function ComicCard({
             <Link
               as={NextLink}
               color="foreground"
-              className="flex text-small justify-between w-full visited:text-gray-400"
+              className="flex w-full justify-between text-small visited:text-gray-400"
               key={chapter.id}
               href={`/chapter/${comic.slug}/${chapter.id}`}
             >

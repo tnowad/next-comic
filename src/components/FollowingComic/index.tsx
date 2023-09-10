@@ -1,5 +1,5 @@
-interface FollowingComicProps { }
+interface FollowingComicProps {}
 
-export default function FollowingComic({ }: FollowingComicProps) {
+export default function FollowingComic({}: FollowingComicProps) {
   return <div></div>;
 }

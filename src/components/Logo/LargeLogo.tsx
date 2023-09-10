@@ -5,8 +5,8 @@ export default function LargeLogo({ auto, className, ...props }: LogoProps) {
   return (
     <svg
       className={clsx(
-        "data-[auto=true]:hidden data-[auto=true]:sm:block block text-foreground",
-        className
+        "block text-foreground data-[auto=true]:hidden data-[auto=true]:sm:block",
+        className,
       )}
       viewBox="0 0 60 10"
       fill="currentColor"

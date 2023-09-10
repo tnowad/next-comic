@@ -7,7 +7,7 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <>
-      <main className="relative container mx-auto max-w-7xl z-10 px-6 min-h-[calc(100vh_-_64px_-_108px)] mb-12 flex-grow">
+      <main className="container relative z-10 mx-auto mb-12 min-h-[calc(100vh_-_64px_-_108px)] max-w-7xl flex-grow px-6">
         <Navbar routes={[]} mobileRoutes={[]} />
         {children}
         <Footer />

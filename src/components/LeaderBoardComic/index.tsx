@@ -5,7 +5,7 @@ interface LeaderBoardComicProps {}
 
 export default function LeaderBoardComic({}: LeaderBoardComicProps) {
   return (
-    <div className="w-full flex flex-col justify-center">
+    <div className="flex w-full flex-col justify-center">
       <Tabs variant="underlined" className="justify-center">
         <Tab key={"month"} title="Top Month">
           <Card>

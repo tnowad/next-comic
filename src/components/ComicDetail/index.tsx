@@ -48,16 +48,16 @@ export default function ComicDetail({ comic }: ComicDetailProps) {
   return (
     <div>
       <div className="w-full">
-        <h1 className="uppercase text-center text-xl">{comic.title}</h1>
+        <h1 className="text-center text-xl uppercase">{comic.title}</h1>
         <p className="text-center italic">
           Updated At: {format(comic.updatedAt)}
         </p>
       </div>
-      <div className="flex flex-col items-center md:items-start md:grid grid-cols-12">
+      <div className="flex grid-cols-12 flex-col items-center md:grid md:items-start">
         <div className="col-span-4">
           <Image
             as={NextImage}
-            className="object-cover h-[350px] w-full z-0"
+            className="z-0 h-[350px] w-full object-cover"
             width={250}
             height={300}
             alt={comic.title}

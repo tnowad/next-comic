@@ -12,8 +12,8 @@ export default function SmallLogo({
   return (
     <svg
       className={clsx(
-        "data-[auto=true]:sm:hidden block text-foreground",
-        className
+        "block text-foreground data-[auto=true]:sm:hidden",
+        className,
       )}
       fill="currentColor"
       height={height || size || 25}

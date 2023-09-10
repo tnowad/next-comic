@@ -13,7 +13,7 @@ export default async function Page() {
 
   return (
     <section className="container mx-auto">
-      <div className="xl:grid grid-cols-12">
+      <div className="grid-cols-12 xl:grid">
         <div className="col-span-8">
           <ComicDetail comic={comic} />
         </div>

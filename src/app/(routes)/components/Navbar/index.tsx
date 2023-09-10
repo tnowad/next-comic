@@ -41,11 +41,11 @@ export default function Navbar({ routes, mobileRoutes }: NavbarProps) {
   const searchButton = (
     <Button
       aria-label="Quick search"
-      className="text-sm font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20"
+      className="bg-default-400/20 text-sm font-normal text-default-500 dark:bg-default-500/20"
       startContent={
         <Icon
           icon="line-md:search"
-          className="text-base text-default-400 pointer-events-none flex-shrink-0"
+          className="pointer-events-none flex-shrink-0 text-base text-default-400"
           strokeWidth={2}
         />
       }
@@ -64,13 +64,13 @@ export default function Navbar({ routes, mobileRoutes }: NavbarProps) {
       onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand as="li" className="gap-3 max-w-fit">
+        <NavbarBrand as="li" className="max-w-fit gap-3">
           <NextLink
             aria-label="Home"
-            className="flex justify-start items-center gap-2 tap-highlight-transparent transition-opacity active:opacity-50"
+            className="flex items-center justify-start gap-2 transition-opacity tap-highlight-transparent active:opacity-50"
             href="/"
           >
-            <SmallLogo className="w-6 h-6 md:hidden" />
+            <SmallLogo className="h-6 w-6 md:hidden" />
             <LargeLogo className="h-5 md:h-6" />
           </NextLink>
         </NavbarBrand>

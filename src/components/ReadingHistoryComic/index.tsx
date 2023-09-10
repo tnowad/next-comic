@@ -1,5 +1,5 @@
-interface ReadingHistoryComicProps { }
+interface ReadingHistoryComicProps {}
 
-export default function ReadingHistoryComic({ }: ReadingHistoryComicProps) {
+export default function ReadingHistoryComic({}: ReadingHistoryComicProps) {
   return <div></div>;
 }
