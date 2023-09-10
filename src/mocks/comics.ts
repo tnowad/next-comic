@@ -8,7 +8,7 @@ import type {
   Character,
 } from "@/types/comic";
 
-function createRandomAuthor(): Author {
+export function createRandomAuthor(): Author {
   return {
     id: faker.string.uuid(),
     role: faker.helpers.arrayElement<string>(["author", "artist"]),
@@ -21,7 +21,7 @@ function createRandomAuthor(): Author {
   };
 }
 
-function createRandomChapter(): Chapter {
+export function createRandomChapter(): Chapter {
   return {
     id: faker.string.uuid(),
     number: faker.number.int({ min: 0, max: 100000000 }),
@@ -29,10 +29,11 @@ function createRandomChapter(): Chapter {
     slug: faker.lorem.slug(),
     totalViews: faker.number.int({ min: 0, max: 100000000 }),
     updatedAt: faker.date.past(),
+    images: faker.helpers.uniqueArray(faker.image.url, 20),
   };
 }
 
-function createRandomGenre(): Genre {
+export function createRandomGenre(): Genre {
   return {
     id: faker.string.uuid(),
     slug: faker.lorem.slug(),
@@ -40,7 +41,7 @@ function createRandomGenre(): Genre {
   };
 }
 
-function createRandomCharacter(): Character {
+export function createRandomCharacter(): Character {
   return {
     id: faker.string.uuid(),
     name: faker.person.fullName(),
