@@ -17,10 +17,10 @@ function createRandomAuthor(): Author {
 function createRandomChapter(): Chapter {
   return {
     id: faker.string.uuid(),
-    number: faker.number.int({ min: 0 }),
+    number: faker.number.int({ min: 0, max: 100000000 }),
     title: faker.helpers.regexpStyleStringParse("Chapter [1-1000]"),
     slug: faker.lorem.slug(),
-    totalViews: faker.number.int({ min: 0 }),
+    totalViews: faker.number.int({ min: 0, max: 100000000 }),
     updatedAt: faker.date.past(),
   };
 }
