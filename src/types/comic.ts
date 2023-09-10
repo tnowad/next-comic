@@ -59,6 +59,8 @@ export interface Comic {
   genres: Genre[];
   coverImage: string;
   status: ComicStatus;
+  averageRating: number;
+  totalRating: number;
   updatedAt: Date;
 }
 
