@@ -2,7 +2,7 @@
 
 import { Comic } from "@/types/comic";
 import { format } from "timeago.js";
-import { Button, Image, Link, Tooltip } from "@nextui-org/react";
+import { Button, Image, Link, Tooltip, Divider } from "@nextui-org/react";
 import NextLink from "next/link";
 import NextImage from "next/image";
 import { Icon } from '@iconify/react';
@@ -97,6 +97,33 @@ export default function ComicDetail({ comic }: ComicDetailProps) {
             <Button className="text-white" color="danger">Continuous</Button>
           </div>
         </div>
+      </div>
+      <div>
+        <p className="flex items-center text-primary"><Icon icon="dashicons:text" />Description</p>
+        <Divider className="bg-primary" />
+        {comic.description?.description}
+      </div>
+      <div>
+        {comic.description?.characters.map(character => (
+          <div key={character.id}>
+            <div>
+              <Image
+                as={NextImage}
+                className="z-0 h-[350px] w-full object-cover"
+                width={250}
+                height={300}
+                alt={character.name}
+                src={character.coverImage}
+              />
+              {character.name}
+            </div>
+            <div>
+              {character.role}
+              {character.birthday.toLocaleString()}
+              {character.description}
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
