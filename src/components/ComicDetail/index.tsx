@@ -2,16 +2,21 @@
 
 import { Comic } from "@/types/comic";
 import { format } from "timeago.js";
-import { Button, Image, Link, Tooltip, Divider } from "@nextui-org/react";
+import { Button, Image, Link, Tooltip, Divider, Table, TableHeader, TableColumn, TableBody, TableRow, TableCell } from "@nextui-org/react";
 import NextLink from "next/link";
 import NextImage from "next/image";
 import { Icon } from '@iconify/react';
+import { formatNumber } from "@/utils/number";
+import { useRouter } from "next/navigation";
 
 interface ComicDetailProps {
   comic: Comic;
 }
 
 export default function ComicDetail({ comic }: ComicDetailProps) {
+
+  const router = useRouter()
+
   const renderAuthors = () => {
     return comic.authors.map((author, index) => (
       <span key={author.id}>
@@ -50,7 +55,7 @@ export default function ComicDetail({ comic }: ComicDetailProps) {
   };
 
   return (
-    <div className="flex w-full flex-col ">
+    <div className="flex w-full flex-col gap-y-2">
       <div className="w-full">
         <h1 className="text-center text-xl uppercase">{comic.title}</h1>
         <p className="text-center italic">
@@ -103,7 +108,7 @@ export default function ComicDetail({ comic }: ComicDetailProps) {
         <Divider className="bg-primary" />
         {comic.description?.description}
       </div>
-      <div>
+      <div className="hidden">
         {comic.description?.characters.map(character => (
           <div key={character.id}>
             <div>
@@ -124,6 +129,30 @@ export default function ComicDetail({ comic }: ComicDetailProps) {
             </div>
           </div>
         ))}
+      </div>
+      <div>
+        <p className="flex items-center text-primary"><Icon icon="ic:baseline-list" />Chapters</p>
+        <Divider className="bg-primary" />
+        <Table selectionMode="single" removeWrapper >
+          <TableHeader >
+            <TableColumn >CHAPTERS</TableColumn>
+            <TableColumn >UPDATE</TableColumn>
+            <TableColumn >VIEWS</TableColumn>
+          </TableHeader>
+          <TableBody>
+            {comic.chapters.map(chapter => (
+              <TableRow key={chapter.id}>
+                <TableCell>
+                  <Link as={NextLink} className="hover:text-primary text-foreground visited:text-gray-500" href={`/chapter/${chapter.slug}/${chapter.id}`}>
+                    {chapter.title}
+                  </Link>
+                </TableCell>
+                <TableCell className="text-gray-500">{format(chapter.updatedAt)}</TableCell>
+                <TableCell className="text-gray-500">{formatNumber(chapter.totalViews)}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
       </div>
     </div>
   );
