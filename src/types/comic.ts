@@ -17,13 +17,13 @@ interface ChapterPreview
   extends Pick<
     Chapter,
     "id" | "number" | "title" | "totalViews" | "slug" | "updatedAt"
-  > {}
+  > { }
 
-interface Character {
+export interface Character {
   id: string;
   name: string;
   description: string;
-  birthday: string;
+  birthday: Date;
   role: string;
   coverImage: string;
 }
@@ -64,7 +64,7 @@ export interface Comic {
   updatedAt: Date;
 }
 
-interface ComicPreview extends Comic {}
+interface ComicPreview extends Comic { }
 
 interface Comment {
   id: string;
