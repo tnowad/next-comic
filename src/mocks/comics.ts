@@ -1,7 +1,14 @@
 import { faker } from "@faker-js/faker";
-import type { Comic, Author, ComicStatus, Chapter, Genre, Character } from "@/types/comic";
+import type {
+  Comic,
+  Author,
+  ComicStatus,
+  Chapter,
+  Genre,
+  Character,
+} from "@/types/comic";
 
-function createRandomAuthor(): Author {
+export function createRandomAuthor(): Author {
   return {
     id: faker.string.uuid(),
     role: faker.helpers.arrayElement<string>(["author", "artist"]),
@@ -14,7 +21,7 @@ function createRandomAuthor(): Author {
   };
 }
 
-function createRandomChapter(): Chapter {
+export function createRandomChapter(): Chapter {
   return {
     id: faker.string.uuid(),
     number: faker.number.int({ min: 0, max: 100000000 }),
@@ -22,26 +29,28 @@ function createRandomChapter(): Chapter {
     slug: faker.lorem.slug(),
     totalViews: faker.number.int({ min: 0, max: 100000000 }),
     updatedAt: faker.date.past(),
+    images: faker.helpers.uniqueArray(faker.image.url, 20),
   };
 }
 
-function createRandomGenre(): Genre {
+export function createRandomGenre(): Genre {
   return {
     id: faker.string.uuid(),
     slug: faker.lorem.slug(),
     title: faker.lorem.word(),
+    description: faker.lorem.paragraphs(),
   };
 }
 
-function createRandomCharacter(): Character {
+export function createRandomCharacter(): Character {
   return {
     id: faker.string.uuid(),
     name: faker.person.fullName(),
     birthday: faker.date.birthdate(),
     description: faker.lorem.paragraphs(),
-    role: faker.helpers.arrayElement(['main', 'wife']),
+    role: faker.helpers.arrayElement(["main", "wife"]),
     coverImage: faker.image.url(),
-  }
+  };
 }
 
 export function createRandomComic(): Comic {
