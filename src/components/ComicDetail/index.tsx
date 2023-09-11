@@ -49,7 +49,9 @@ export default function ComicDetail({ comic }: ComicDetailProps) {
   const renderGenres = () => {
     return comic.genres.map((genre, index) => (
       <span key={genre.id}>
-        <Tooltip content={<p className="capitalize">{genre.title}</p>}>
+        <Tooltip
+          content={<p className="max-w-md capitalize">{genre.description}</p>}
+        >
           <Link
             as={NextLink}
             href={`/genres/${genre.slug}/${genre.id}`}

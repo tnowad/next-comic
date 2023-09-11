@@ -38,6 +38,7 @@ export function createRandomGenre(): Genre {
     id: faker.string.uuid(),
     slug: faker.lorem.slug(),
     title: faker.lorem.word(),
+    description: faker.lorem.paragraphs(),
   };
 }
 
