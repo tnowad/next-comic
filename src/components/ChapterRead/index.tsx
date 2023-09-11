@@ -16,7 +16,6 @@ export default function ChapterRead({ chapter }: ChapterReadProps) {
           src={image}
           slot="123"
           className=""
-
           alt={chapter.title + " " + chapter.number}
         />
       ))}
