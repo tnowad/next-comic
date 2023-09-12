@@ -5,5 +5,6 @@ export default interface ComicCardProps {
   horizon?: boolean;
   comic?: Comic;
   maxTitleLength?: number;
-  showChapters?: boolean;
+  hideChapters?: boolean;
+  hideDetail?: boolean;
 }
