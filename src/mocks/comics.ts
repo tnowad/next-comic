@@ -1,7 +1,16 @@
 import { faker } from "@faker-js/faker";
-import type { Comic, Author, ComicStatus, Chapter, Genre, Character } from "@/types/comic";
+import type {
+  Comic,
+  Author,
+  ComicStatus,
+  Chapter,
+  Genre,
+  Character,
+} from "@/types/comic";
 
-function createRandomAuthor(): Author {
+const catImages = ["/images/image.jpg", "/images/image-small.jpg"];
+
+export function createRandomAuthor(): Author {
   return {
     id: faker.string.uuid(),
     role: faker.helpers.arrayElement<string>(["author", "artist"]),
@@ -14,7 +23,7 @@ function createRandomAuthor(): Author {
   };
 }
 
-function createRandomChapter(): Chapter {
+export function createRandomChapter(): Chapter {
   return {
     id: faker.string.uuid(),
     number: faker.number.int({ min: 0, max: 100000000 }),
@@ -22,26 +31,34 @@ function createRandomChapter(): Chapter {
     slug: faker.lorem.slug(),
     totalViews: faker.number.int({ min: 0, max: 100000000 }),
     updatedAt: faker.date.past(),
+    // images: faker.helpers.uniqueArray(faker.image.url, 20),
+    images: faker.helpers.arrayElements(
+      Array.from({ length: 20 }).map(
+        (_, index) => catImages[index % catImages.length],
+      ),
+      20,
+    ),
   };
 }
 
-function createRandomGenre(): Genre {
+export function createRandomGenre(): Genre {
   return {
     id: faker.string.uuid(),
     slug: faker.lorem.slug(),
     title: faker.lorem.word(),
+    description: faker.lorem.paragraphs(),
   };
 }
 
-function createRandomCharacter(): Character {
+export function createRandomCharacter(): Character {
   return {
     id: faker.string.uuid(),
     name: faker.person.fullName(),
     birthday: faker.date.birthdate(),
     description: faker.lorem.paragraphs(),
-    role: faker.helpers.arrayElement(['main', 'wife']),
+    role: faker.helpers.arrayElement(["main", "wife"]),
     coverImage: faker.image.url(),
-  }
+  };
 }
 
 export function createRandomComic(): Comic {
@@ -59,7 +76,8 @@ export function createRandomComic(): Comic {
     slug: faker.lorem.slug(),
     totalFollows: faker.number.int({ min: 0, max: 100000000 }),
     genres: faker.helpers.uniqueArray(createRandomGenre, 10),
-    coverImage: faker.image.url(),
+    // coverImage: faker.image.url(),
+    coverImage: catImages[0],
     updatedAt: faker.date.past(),
     totalRating: faker.number.int({ min: 0, max: 100000000 }),
     averageRating: faker.number.float({ min: 0, max: 5 }),

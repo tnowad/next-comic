@@ -2,6 +2,7 @@ export interface Genre {
   id: string;
   title: string;
   slug: string;
+  description: string;
 }
 
 export interface Chapter {
@@ -11,13 +12,14 @@ export interface Chapter {
   totalViews: number;
   updatedAt: Date;
   slug: string;
+  images: string[];
 }
 
 interface ChapterPreview
   extends Pick<
     Chapter,
     "id" | "number" | "title" | "totalViews" | "slug" | "updatedAt"
-  > { }
+  > {}
 
 export interface Character {
   id: string;
@@ -64,7 +66,7 @@ export interface Comic {
   updatedAt: Date;
 }
 
-interface ComicPreview extends Comic { }
+export interface ComicPreview extends Comic {}
 
 interface Comment {
   id: string;

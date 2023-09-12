@@ -60,7 +60,7 @@ export default function Navbar({ routes, mobileRoutes }: NavbarProps) {
       className={clsx({ "z-[100000]": isMenuOpen })}
       isMenuOpen={isMenuOpen}
       maxWidth="xl"
-      position="sticky"
+      position="static"
       onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
