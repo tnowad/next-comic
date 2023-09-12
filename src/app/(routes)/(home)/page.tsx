@@ -6,8 +6,8 @@ import RecentlyUpdateComics from "@/components/RecentlyUpdateComics";
 export default function Page() {
   return (
     <>
-      <section className="container mx-auto">
-        <div className="grid-cols-12 xl:grid">
+      <section className="mx-auto">
+        <div className="grid-cols-12 gap-2 xl:grid">
           <div className="col-span-8">
             <RecentlyUpdateComics />
           </div>

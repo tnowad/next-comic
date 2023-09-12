@@ -10,33 +10,38 @@ import {
   Link,
   Tooltip,
 } from "@nextui-org/react";
-import { Comic } from "@/types/comic";
 import { Icon } from "@iconify/react";
 import { formatNumber } from "@/utils/number";
 import { format } from "timeago.js";
 import React from "react";
-
-interface ComicCardProps {
-  comic: Comic;
-  maxTitleLength?: number;
-}
+import ComicCardProps from "./ComicCardProps";
+import ComicCardTooltip from "./ComicCardTooltip";
+import clsx from "clsx";
 
 export default function ComicCard({
   comic,
+  hideChapters,
   maxTitleLength = 50,
 }: ComicCardProps) {
+  if (!comic) {
+    return null;
+  }
+
   const truncatedTitle =
     comic.title.length > maxTitleLength
       ? comic.title.substring(0, maxTitleLength) + "..."
       : comic.title;
 
   return (
-    <Card radius="sm" className="grid grid-cols-[30%,_70%] sx:flex">
-      <CardHeader className="overflow-visible p-0 sx:justify-center">
+    <Card radius="sm" className={clsx("grid grid-cols-12 sx:flex")}>
+      <CardHeader
+        className={"col-span-5 overflow-visible p-0 sx:justify-center"}
+      >
         <div className="relative">
           <Image
             as={NextImage}
-            className="z-0 h-[250px] w-full object-cover"
+            removeWrapper
+            className="z-0 h-[200px] w-full object-cover sx:h-[250px]"
             width={200}
             height={250}
             alt={comic.title}
@@ -54,79 +59,8 @@ export default function ComicCard({
           </div>
         </div>
       </CardHeader>
-      <CardBody className="flex w-full flex-col justify-between p-1">
-        <Tooltip
-          content={
-            <div className="w-[400px]">
-              <Link
-                as={NextLink}
-                color="foreground"
-                href={`/comics/${comic.slug}/${comic.id}`}
-              >
-                <p className="whitespace-break-spaces capitalize">
-                  {comic.title}
-                </p>
-              </Link>
-              <div className="grid grid-cols-12">
-                <div className="col-span-5">
-                  <Image
-                    as={NextImage}
-                    className="z-0 h-[250px] w-full object-cover"
-                    width={200}
-                    height={250}
-                    alt={comic.title}
-                    src={comic.coverImage}
-                  />
-                </div>
-                <div className="col-span-7">
-                  <p className="capitalize">
-                    <span className="text-green-400">Genres: </span>
-                    {comic.genres.map((genre, index) => (
-                      <React.Fragment key={genre.id}>
-                        <Link
-                          as={NextLink}
-                          color="foreground"
-                          href={`/genres/${genre.slug}/${genre.id}`}
-                        >
-                          {genre.title}
-                        </Link>
-                        {index !== comic.genres.length - 1 && ", "}
-                      </React.Fragment>
-                    ))}
-                  </p>
-                  <p>
-                    <span className="text-green-400">Status: </span>
-                    <Link
-                      as={NextLink}
-                      color="foreground"
-                      className="uppercase"
-                      href={`#`}
-                    >
-                      {comic.status}
-                    </Link>
-                  </p>
-                  <p>
-                    <span className="text-green-400">Total Views: </span>
-                    {formatNumber(comic.totalViews)}
-                  </p>
-                  <p>
-                    <span className="text-green-400">Total Followers: </span>
-                    {formatNumber(comic.totalFollows)}
-                  </p>
-                  <p>
-                    <span className="text-green-400">Total Comments: </span>
-                    {formatNumber(comic.totalComments)}
-                  </p>
-                  <p>
-                    <span className="text-green-400">Updated At: </span>
-                    {format(comic.updatedAt)}
-                  </p>
-                </div>
-              </div>
-              <div>{comic.description?.description}</div>
-            </div>
-          }
-        >
+      <CardBody className="col-span-7 flex w-full flex-col p-1 sx:justify-between">
+        <Tooltip content={<ComicCardTooltip comic={comic} />}>
           <Link
             as={NextLink}
             color="foreground"
@@ -138,18 +72,19 @@ export default function ComicCard({
           </Link>
         </Tooltip>
         <div>
-          {comic.chapters.slice(-3).map((chapter) => (
-            <Link
-              as={NextLink}
-              color="foreground"
-              className="flex w-full justify-between text-small visited:text-gray-400"
-              key={chapter.id}
-              href={`/chapter/${comic.slug}/${chapter.id}`}
-            >
-              <p>{chapter.title}</p>
-              <p>{format(chapter.updatedAt)}</p>
-            </Link>
-          ))}
+          {hideChapters ??
+            comic.chapters.slice(-3).map((chapter) => (
+              <Link
+                as={NextLink}
+                color="foreground"
+                className="flex w-full justify-between text-[13px] visited:text-gray-400"
+                key={chapter.id}
+                href={`/chapter/${comic.slug}/${chapter.id}`}
+              >
+                <p>{chapter.title}</p>
+                <p>{format(chapter.updatedAt)}</p>
+              </Link>
+            ))}
         </div>
       </CardBody>
     </Card>

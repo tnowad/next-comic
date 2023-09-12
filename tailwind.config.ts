@@ -11,10 +11,10 @@ const config: Config = {
   theme: {
     extend: {
       screens: {
-        sx: "370px",
-        sm: "576px",
-        md: "768px",
-        lg: "992px",
+        sx: "450px",
+        sm: "650px",
+        md: "878px",
+        lg: "1070px",
         xl: "1200px",
       },
     },

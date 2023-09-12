@@ -13,7 +13,7 @@ export default function Footer() {
   }
 
   return (
-    <footer className="container mx-auto max-w-7xl px-12 pb-12">
+    <footer className="container mx-auto max-w-7xl py-3">
       <div className="flex flex-col items-center justify-center gap-1">
         <p className="text-sm text-default-400">
           Created by{" "}
