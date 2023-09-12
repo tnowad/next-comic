@@ -1,33 +1,25 @@
 import ChapterRead from "@/components/ChapterRead";
+import ChapterReadDetail from "@/components/ChapterReadDetail";
 import { createRandomChapter, createRandomComic } from "@/mocks/comics";
-import { ComicPreview } from "@/types/comic";
-import { faker } from "@faker-js/faker";
-
-async function getComicPreview() {
-  return createRandomComic() as ComicPreview;
-}
-
 async function getChapter() {
   return createRandomChapter();
 }
-
+async function getComic() {
+  return createRandomComic();
+}
 async function getChapters() {
-  return faker.helpers.uniqueArray(createRandomChapter, 100);
+  return Array.from({ length: 20 }).map(createRandomChapter);
 }
 
 export default async function Page() {
-  const comicPreview = await getComicPreview();
   const chapter = await getChapter();
-  const chapters = await getChapters();
+  const comic = await getComic();
+  comic.chapters = await getChapters();
 
   return (
-    <div className="flex w-full flex-col">
-      {comicPreview.title}
-      {chapters.map((chapter) => (
-        <div key={chapter.id}>{chapter.title}</div>
-      ))}
-      {chapter.title}
+    <>
+      <ChapterReadDetail comic={comic} chapter={chapter} />
       <ChapterRead chapter={chapter} />
-    </div>
+    </>
   );
 }
