@@ -9,15 +9,19 @@ interface ChapterReadProps {
 
 export default function ChapterRead({ chapter }: ChapterReadProps) {
   return (
-    <div>
+    <div className="flex w-full flex-col items-center">
       {chapter.images.map((image) => (
-        <Image
-          key={image}
-          src={image}
-          slot="123"
-          className=""
-          alt={chapter.title + " " + chapter.number}
-        />
+        <div key={image}>
+          <Image
+            as={NextImage}
+            src={image}
+            height={1200}
+            width={1200}
+            removeWrapper
+            sizes="100vw"
+            alt={chapter.title + " " + chapter.number}
+          />
+        </div>
       ))}
     </div>
   );
