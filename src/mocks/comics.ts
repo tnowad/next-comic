@@ -6,24 +6,35 @@ import type {
   Chapter,
   Genre,
   Character,
+  AuthorPreview,
+  ChapterPreview,
+  CharacterPreview,
+  ComicPreview,
 } from "@/types/comic";
+import { User, UserPreview } from "@/types/user";
 
 const catImages = ["/images/image.jpg", "/images/image-small.jpg"];
 
-export function createRandomAuthor(): Author {
+export function createRandomAuthorPreview(): AuthorPreview {
   return {
     id: faker.string.uuid(),
     role: faker.helpers.arrayElement<string>(["author", "artist"]),
     name: faker.person.fullName(),
     slug: faker.lorem.slug(),
-    sex: faker.person.sex(),
-    description: faker.word.words({ count: { min: 0, max: 50 } }),
-    birthday: faker.date.birthdate(),
     avatarImage: faker.image.url({ height: 400, width: 200 }),
   };
 }
 
-export function createRandomChapter(): Chapter {
+export function createRandomAuthor(): Author {
+  return {
+    ...createRandomAuthorPreview(),
+    sex: faker.person.sex(),
+    description: faker.word.words({ count: { min: 0, max: 50 } }),
+    birthday: faker.date.birthdate(),
+  };
+}
+
+export function createRandomChapterPreview(): ChapterPreview {
   return {
     id: faker.string.uuid(),
     number: faker.number.int({ min: 0, max: 100000000 }),
@@ -31,7 +42,12 @@ export function createRandomChapter(): Chapter {
     slug: faker.lorem.slug(),
     totalViews: faker.number.int({ min: 0, max: 100000000 }),
     updatedAt: faker.date.past(),
-    // images: faker.helpers.uniqueArray(faker.image.url, 20),
+  };
+}
+
+export function createRandomChapter(): Chapter {
+  return {
+    ...createRandomChapterPreview(),
     images: faker.helpers.arrayElements(
       Array.from({ length: 20 }).map(
         (_, index) => catImages[index % catImages.length],
@@ -50,18 +66,24 @@ export function createRandomGenre(): Genre {
   };
 }
 
-export function createRandomCharacter(): Character {
+export function createRandomCharacterPreview(): CharacterPreview {
   return {
     id: faker.string.uuid(),
     name: faker.person.fullName(),
-    birthday: faker.date.birthdate(),
-    description: faker.lorem.paragraphs(),
     role: faker.helpers.arrayElement(["main", "wife"]),
     coverImage: faker.image.url(),
   };
 }
 
-export function createRandomComic(): Comic {
+export function createRandomCharacter(): Character {
+  return {
+    ...createRandomCharacterPreview(),
+    birthday: faker.date.birthdate(),
+    description: faker.lorem.paragraphs(),
+  };
+}
+
+export function createRandomComicPreview(): ComicPreview {
   return {
     id: faker.string.uuid(),
     title: faker.word.words({ count: { min: 3, max: 20 } }),
@@ -70,7 +92,7 @@ export function createRandomComic(): Comic {
       characters: faker.helpers.uniqueArray(createRandomCharacter, 4),
       description: faker.lorem.paragraphs(),
     },
-    chapters: faker.helpers.uniqueArray(createRandomChapter, 50),
+    chapters: faker.helpers.uniqueArray(createRandomChapterPreview, 50),
     totalViews: faker.number.int({ min: 0, max: 100000000 }),
     totalComments: faker.number.int({ min: 0, max: 100000000 }),
     slug: faker.lorem.slug(),
@@ -86,5 +108,31 @@ export function createRandomComic(): Comic {
       "completed",
       "cancelled",
     ]),
+  };
+}
+
+export function createRandomComic(): Comic {
+  return {
+    ...createRandomComicPreview(),
+    chapters: faker.helpers.uniqueArray(createRandomChapter, 50),
+  };
+}
+
+export function createRandomUserPreview(): UserPreview {
+  return {
+    id: faker.string.uuid(),
+    name: faker.internet.displayName(),
+    email: faker.internet.email(),
+    username: faker.internet.userName(),
+    avatarImage: catImages[0],
+    role: faker.helpers.arrayElement(["user", "admin"]),
+  };
+}
+
+export function createRandomUser(): User {
+  return {
+    ...createRandomUserPreview(),
+    birthday: faker.date.birthdate(),
+    bio: faker.lorem.paragraphs(),
   };
 }
