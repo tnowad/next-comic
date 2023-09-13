@@ -3,7 +3,7 @@
 import { Button, Input, Link } from "@nextui-org/react";
 import NextLink from "next/link";
 
-export default function Register() {
+export default function Signup() {
   return (
     <form className="flex h-[300px] flex-col gap-4">
       <Input

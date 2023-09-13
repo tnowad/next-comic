@@ -17,7 +17,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
   }, [pathname]);
 
   return (
-    <div className="flex h-full w-full flex-col items-center">
+    <div className="mt-28 flex h-full w-full flex-col items-center">
       <Card className="w-[340px] max-w-full">
         <CardBody className="overflow-hidden">
           <Tabs
@@ -33,7 +33,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
             <Tab key="/login" title="Login">
               {children}
             </Tab>
-            <Tab key="/register" title="Sign up">
+            <Tab key="/signup" title="Sign up">
               {children}
             </Tab>
           </Tabs>

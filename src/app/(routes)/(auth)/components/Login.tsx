@@ -20,8 +20,8 @@ export default function Login() {
       />
       <p className="text-center text-small">
         Need to create an account?{" "}
-        <Link size="sm" as={NextLink} href="/register">
-          Register
+        <Link size="sm" as={NextLink} href="/signup">
+          Sign up
         </Link>
       </p>
       <div className="flex justify-end gap-2">

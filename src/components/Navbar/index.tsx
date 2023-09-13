@@ -2,7 +2,6 @@
 import LargeLogo from "@/components/Logo/LargeLogo";
 import SmallLogo from "@/components/Logo/SmallLogo";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
-import { useIsMounted } from "@/hooks/use-is-mounted";
 import { Route } from "@/types/page";
 import { faker } from "@faker-js/faker";
 import { Icon } from "@iconify/react";
@@ -27,6 +26,7 @@ import clsx from "clsx";
 import NextLink from "next/link";
 import { useRef, useState } from "react";
 import LeaderBoardComic from "../LeaderBoardComic";
+import { useRouter } from "next/navigation";
 
 interface NavbarProps {
   routes: Route[];
@@ -36,8 +36,7 @@ interface NavbarProps {
 export default function Navbar({ routes, mobileRoutes }: NavbarProps) {
   const ref = useRef<HTMLElement>(null);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean | undefined>(false);
-
-  const isMounted = useIsMounted();
+  const router = useRouter();
 
   const searchButton = (
     <Button
@@ -115,6 +114,12 @@ export default function Navbar({ routes, mobileRoutes }: NavbarProps) {
                 />
               </DropdownItem>
               <DropdownItem key="followed-comics">Followed Comics</DropdownItem>
+              <DropdownItem key="login" onClick={() => router.push("/login")}>
+                Login
+              </DropdownItem>
+              <DropdownItem key="signup" onClick={() => router.push("/signup")}>
+                Sign up
+              </DropdownItem>
               <DropdownItem className="text-danger" color="danger" key="logout">
                 Logout
               </DropdownItem>
