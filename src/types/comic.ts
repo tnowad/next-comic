@@ -1,3 +1,5 @@
+import { UserPreview } from "./user";
+
 export interface Genre {
   id: string;
   title: string;
@@ -5,29 +7,29 @@ export interface Genre {
   description: string;
 }
 
-export interface Chapter {
+export interface ChapterPreview {
   id: string;
   number: number;
   title: string;
   totalViews: number;
   updatedAt: Date;
   slug: string;
+}
+
+export interface Chapter extends ChapterPreview {
   images: string[];
 }
 
-interface ChapterPreview
-  extends Pick<
-    Chapter,
-    "id" | "number" | "title" | "totalViews" | "slug" | "updatedAt"
-  > {}
-
-export interface Character {
+export interface CharacterPreview {
   id: string;
+  coverImage: string;
   name: string;
+  role: string;
+}
+
+export interface Character extends CharacterPreview {
   description: string;
   birthday: Date;
-  role: string;
-  coverImage: string;
 }
 
 interface ComicDescription {
@@ -35,20 +37,23 @@ interface ComicDescription {
   description: string;
 }
 
-export interface Author {
+export interface AuthorPreview {
   id: string;
   role: string;
-  sex: string;
   name: string;
   avatarImage: string;
+  slug: string;
+}
+
+export interface Author extends AuthorPreview {
+  sex: string;
   birthday: Date;
   description: string;
-  slug: string;
 }
 
 export type ComicStatus = "ongoing" | "completed" | "cancelled";
 
-export interface Comic {
+export interface ComicPreview {
   id: string;
   slug: string;
   title: string;
@@ -66,9 +71,11 @@ export interface Comic {
   updatedAt: Date;
 }
 
-export interface ComicPreview extends Comic {}
+export interface Comic extends ComicPreview {
+  chapters: Chapter[];
+}
 
-interface Comment {
+export interface Comment {
   id: string;
   contents: string;
   user: UserPreview;
