@@ -1,12 +1,15 @@
 import ChapterRead from "@/components/ChapterRead";
 import ChapterReadDetail from "@/components/ChapterReadDetail";
 import { createRandomChapter, createRandomComic } from "@/mocks/comics";
+
 async function getChapter() {
   return createRandomChapter();
 }
+
 async function getComic() {
   return createRandomComic();
 }
+
 async function getChapters() {
   return Array.from({ length: 20 }).map(createRandomChapter);
 }

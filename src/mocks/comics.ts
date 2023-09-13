@@ -1,17 +1,17 @@
-import { faker } from "@faker-js/faker";
 import type {
-  Comic,
   Author,
-  ComicStatus,
-  Chapter,
-  Genre,
-  Character,
   AuthorPreview,
+  Chapter,
   ChapterPreview,
+  Character,
   CharacterPreview,
+  Comic,
   ComicPreview,
+  ComicStatus,
+  Genre,
 } from "@/types/comic";
 import { User, UserPreview } from "@/types/user";
+import { faker } from "@faker-js/faker";
 
 const catImages = ["/images/image.jpg", "/images/image-small.jpg"];
 

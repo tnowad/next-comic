@@ -1,13 +1,14 @@
-import { Comic } from "@/types/comic";
+import { ComicPreview } from "@/types/comic";
 import { Image, Link } from "@nextui-org/react";
 import NextImage from "next/image";
 import NextLink from "next/link";
 import { format } from "timeago.js";
 
 interface ComicCardHorizonProps {
-  comic: Comic;
+  comic: ComicPreview;
   maxTitleLength?: number;
 }
+
 export default function ComicCardHorizon({
   comic,
   maxTitleLength = 50,

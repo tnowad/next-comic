@@ -4,6 +4,7 @@ export interface UserPreview {
   avatarImage: string;
   role: string;
   username: string;
+  email: string;
 }
 
 export interface User extends UserPreview {

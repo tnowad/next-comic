@@ -1,12 +1,12 @@
 "use client";
 
-import { Comic } from "@/types/comic";
+import { ComicPreview } from "@/types/comic";
+import { faker } from "@faker-js/faker";
 import ComicCard from "../ComicCard";
 import ComicCardSkeleton from "../ComicCard/ComicCardSkeleton";
-import { faker } from "@faker-js/faker";
 
 interface ComicListProps {
-  comics?: Comic[];
+  comics?: ComicPreview[];
 }
 
 export default function ComicList({ comics }: ComicListProps) {
@@ -16,8 +16,8 @@ export default function ComicList({ comics }: ComicListProps) {
       {isLoaded
         ? comics.map((comic) => <ComicCard comic={comic} key={comic.id} />)
         : Array.from({ length: 24 }).map(() => (
-          <ComicCardSkeleton key={faker.string.uuid()} />
-        ))}
+            <ComicCardSkeleton key={faker.string.uuid()} />
+          ))}
     </div>
   );
 }

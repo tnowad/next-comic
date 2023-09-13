@@ -1,39 +1,31 @@
 "use client";
-import {
-  link,
-  Navbar as NextUINavbar,
-  NavbarContent,
-  NavbarMenu,
-  NavbarMenuToggle,
-  NavbarBrand,
-  NavbarItem,
-  Link,
-  Button,
-  Kbd,
-  Dropdown,
-  DropdownMenu,
-  DropdownItem,
-  DropdownTrigger,
-  Chip,
-  Badge,
-  User,
-  DropdownSection,
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from "@nextui-org/react";
-import NextLink from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-import { Route } from "@/types/page";
-import SmallLogo from "@/components/Logo/SmallLogo";
 import LargeLogo from "@/components/Logo/LargeLogo";
-import clsx from "clsx";
-import { useRef, useState } from "react";
-import { useIsMounted } from "@/hooks/use-is-mounted";
-import { Icon } from "@iconify/react";
+import SmallLogo from "@/components/Logo/SmallLogo";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
-import { Avatar } from "@nextui-org/react";
+import { useIsMounted } from "@/hooks/use-is-mounted";
+import { Route } from "@/types/page";
 import { faker } from "@faker-js/faker";
+import { Icon } from "@iconify/react";
+import {
+  Avatar,
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  NavbarMenu,
+  Navbar as NextUINavbar,
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  User,
+} from "@nextui-org/react";
+import clsx from "clsx";
+import NextLink from "next/link";
+import { useRef, useState } from "react";
 import LeaderBoardComic from "../LeaderBoardComic";
 
 interface NavbarProps {
