@@ -15,6 +15,12 @@ import {
   DropdownItem,
   DropdownTrigger,
   Chip,
+  Badge,
+  User,
+  DropdownSection,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
 } from "@nextui-org/react";
 import NextLink from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -26,6 +32,9 @@ import { useRef, useState } from "react";
 import { useIsMounted } from "@/hooks/use-is-mounted";
 import { Icon } from "@iconify/react";
 import ThemeSwitcher from "@/components/ThemeSwitcher";
+import { Avatar } from "@nextui-org/react";
+import { faker } from "@faker-js/faker";
+import LeaderBoardComic from "../LeaderBoardComic";
 
 interface NavbarProps {
   routes: Route[];
@@ -75,10 +84,51 @@ export default function Navbar({ routes, mobileRoutes }: NavbarProps) {
           </NextLink>
         </NavbarBrand>
         <NavbarItem className="w-full"></NavbarItem>
+        <NavbarItem className="hidden lg:flex">{searchButton}</NavbarItem>
         <NavbarItem>
           <ThemeSwitcher />
         </NavbarItem>
-        <NavbarItem className="hidden lg:flex">{searchButton}</NavbarItem>
+        <NavbarItem>
+          <Popover showArrow>
+            <PopoverTrigger>
+              <Button className="rounded-full" isIconOnly>
+                <Icon icon="ion:notifications" />
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent>
+              <LeaderBoardComic />
+            </PopoverContent>
+          </Popover>
+        </NavbarItem>
+        <NavbarItem>
+          <Dropdown>
+            <DropdownTrigger>
+              <Button className="rounded-full" isIconOnly>
+                <Avatar src={faker.image.url()} />
+              </Button>
+            </DropdownTrigger>
+            <DropdownMenu aria-label="Static Actions">
+              <DropdownItem isReadOnly key="profile" className="h-14 gap-2">
+                <User
+                  name="Junior Garcia"
+                  description="@jrgarciadev"
+                  classNames={{
+                    name: "text-default-600",
+                    description: "text-default-500",
+                  }}
+                  avatarProps={{
+                    size: "sm",
+                    src: faker.image.url(),
+                  }}
+                />
+              </DropdownItem>
+              <DropdownItem key="followed-comics">Followed Comics</DropdownItem>
+              <DropdownItem className="text-danger" color="danger" key="logout">
+                Logout
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+        </NavbarItem>
       </NavbarContent>
       <NavbarMenu></NavbarMenu>
     </NextUINavbar>
