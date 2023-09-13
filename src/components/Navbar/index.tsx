@@ -27,6 +27,7 @@ import NextLink from "next/link";
 import { useRef, useState } from "react";
 import LeaderBoardComic from "../LeaderBoardComic";
 import { useRouter } from "next/navigation";
+import UserNavbarDropdown from "../UserNavbarDropdown";
 
 interface NavbarProps {
   routes: Route[];
@@ -92,39 +93,7 @@ export default function Navbar({ routes, mobileRoutes }: NavbarProps) {
           </Popover>
         </NavbarItem>
         <NavbarItem>
-          <Dropdown>
-            <DropdownTrigger>
-              <Button className="rounded-full" isIconOnly>
-                <Avatar src={faker.image.url()} />
-              </Button>
-            </DropdownTrigger>
-            <DropdownMenu aria-label="Static Actions">
-              <DropdownItem isReadOnly key="profile" className="h-14 gap-2">
-                <User
-                  name="Junior Garcia"
-                  description="@jrgarciadev"
-                  classNames={{
-                    name: "text-default-600",
-                    description: "text-default-500",
-                  }}
-                  avatarProps={{
-                    size: "sm",
-                    src: faker.image.url(),
-                  }}
-                />
-              </DropdownItem>
-              <DropdownItem key="followed-comics">Followed Comics</DropdownItem>
-              <DropdownItem key="login" onClick={() => router.push("/login")}>
-                Login
-              </DropdownItem>
-              <DropdownItem key="signup" onClick={() => router.push("/signup")}>
-                Sign up
-              </DropdownItem>
-              <DropdownItem className="text-danger" color="danger" key="logout">
-                Logout
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
+          <UserNavbarDropdown />
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu></NavbarMenu>

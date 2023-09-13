@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 async function getAllComic() {
-  return Array.from({ length: 4 * 3 * 2 * 2 }).map(createRandomComicPreview);
+  return Array.from({ length: 3 * 4 * 5 }).map(createRandomComicPreview);
 }
 
 export default function RecentlyUpdateComics() {
