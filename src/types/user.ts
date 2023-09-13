@@ -1,10 +1,12 @@
-interface User {
+export interface UserPreview {
   id: string;
   name: string;
   avatarImage: string;
-  birthday: string;
-  bio: string;
   role: string;
+  username: string;
 }
 
-interface UserPreview extends Pick<User, "id" | "name" | "avatarImage"> {}
+export interface User extends UserPreview {
+  birthday: Date;
+  bio: string;
+}
