@@ -12,6 +12,7 @@ import {
   DropdownTrigger,
   User,
 } from "@nextui-org/react";
+import { Icon } from "@iconify/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -59,19 +60,50 @@ export default function UserNavbarDropdown() {
               }}
             />
           </DropdownItem>
-          <DropdownItem key="followed-comics" onClick={() => router.push("/")}>
+          <DropdownItem
+            key="followed-comics"
+            onClick={() => router.push("/")}
+            endContent={<Icon icon="mdi:heart" />}
+          >
             Followed Comics
           </DropdownItem>
-          <DropdownItem className="text-danger" color="danger" key="logout">
+          <DropdownItem
+            key="setting"
+            onClick={() => router.push("/settings")}
+            endContent={<Icon icon="uil:setting" />}
+          >
+            Settings
+          </DropdownItem>
+          <DropdownItem
+            className="text-danger"
+            color="danger"
+            key="logout"
+            endContent={<Icon icon="material-symbols:logout" />}
+          >
             Logout
           </DropdownItem>
         </DropdownMenu>
       ) : (
         <DropdownMenu aria-label="User menu">
-          <DropdownItem key="login" onClick={() => router.push("/login")}>
+          <DropdownItem
+            key="setting"
+            onClick={() => router.push("/settings")}
+            endContent={<Icon icon="uil:setting" />}
+          >
+            Settings
+          </DropdownItem>
+          <DropdownItem
+            key="login"
+            onClick={() => router.push("/login")}
+            endContent={<Icon icon="material-symbols:login" />}
+          >
             Login
           </DropdownItem>
-          <DropdownItem key="signup" onClick={() => router.push("/signup")}>
+          <DropdownItem
+            key="signup"
+            onClick={() => router.push("/signup")}
+            endContent={<Icon icon="mdi:register-outline" />}
+          >
             Sign up
           </DropdownItem>
         </DropdownMenu>
