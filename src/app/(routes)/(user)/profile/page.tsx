@@ -33,7 +33,7 @@ export default function Page() {
             <CardBody>
               <div>Fullname: {user?.name}</div>
               <div>Email: {user?.email}</div>
-              <div>{user?.roles.map((role) => <>{role}</>)}</div>
+              <div>{user?.roles.map((role) => <>{role.name}</>)}</div>
               <Progress
                 label={
                   <p>
