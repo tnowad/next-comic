@@ -10,7 +10,14 @@ import type {
   ComicStatus,
   Genre,
 } from "@/types/comic";
-import { User, UserPreview } from "@/types/user";
+import {
+  Permission,
+  PermissionPreview,
+  Role,
+  RolePreview,
+  User,
+  UserPreview,
+} from "@/types/user";
 import { faker } from "@faker-js/faker";
 
 const catImages = ["/images/image.jpg", "/images/image-small.jpg"];
@@ -118,6 +125,48 @@ export function createRandomComic(): Comic {
   };
 }
 
+export function createRandomPermissionPreview(): PermissionPreview {
+  return {
+    id: faker.string.uuid(),
+    name: faker.helpers.mustache("{{table}}_{{action}}", {
+      table: () => faker.helpers.arrayElement(["user", "comic", "chapter"]),
+      action: () =>
+        faker.helpers.arrayElement(["read", "edit", "update", "delete"]),
+    }),
+  };
+}
+
+export function createRandomPermission(): Permission {
+  return {
+    ...createRandomPermissionPreview(),
+    description: faker.lorem.sentences(),
+  };
+}
+
+export function createRandomRolePreview(): RolePreview {
+  return {
+    id: faker.string.uuid(),
+    name: faker.helpers.arrayElement([
+      "Group Leader",
+      "Group Member",
+      "User",
+      "Author",
+      "Artist",
+      "Moderator",
+      "Admin",
+    ]),
+    permissions: faker.helpers.uniqueArray(createRandomPermissionPreview, 3),
+  };
+}
+
+export function createRandomRole(): Role {
+  return {
+    ...createRandomUserPreview(),
+    description: faker.lorem.paragraphs(),
+    permissions: faker.helpers.uniqueArray(createRandomPermission, 3),
+  };
+}
+
 export function createRandomUserPreview(): UserPreview {
   return {
     id: faker.string.uuid(),
@@ -125,18 +174,7 @@ export function createRandomUserPreview(): UserPreview {
     email: faker.internet.email(),
     username: faker.internet.userName(),
     avatarImage: catImages[0],
-    roles: faker.helpers.arrayElements(
-      [
-        "Group Leader",
-        "Group Member",
-        "User",
-        "Author",
-        "Artist",
-        "Moderator",
-        "Admin",
-      ],
-      4,
-    ),
+    roles: faker.helpers.uniqueArray(createRandomRolePreview, 3),
   };
 }
 
@@ -145,5 +183,6 @@ export function createRandomUser(): User {
     ...createRandomUserPreview(),
     birthday: faker.date.birthdate(),
     bio: faker.lorem.paragraphs(),
+    roles: faker.helpers.uniqueArray(createRandomRole, 3),
   };
 }
