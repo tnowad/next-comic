@@ -9,6 +9,7 @@ import {
   Dropdown,
   DropdownItem,
   DropdownMenu,
+  DropdownSection,
   DropdownTrigger,
   User,
 } from "@nextui-org/react";
@@ -36,78 +37,101 @@ export default function UserNavbarDropdown() {
     <Dropdown>
       <DropdownTrigger>
         <Button className="rounded-full" isIconOnly>
-          <Avatar src={user?.avatarImage} />
+          <Avatar src={user?.avatarImage || "/images/avatar.jpg"} />
         </Button>
       </DropdownTrigger>
-      {user ? (
-        <DropdownMenu aria-label="User menu">
-          <DropdownItem
-            isReadOnly
-            key="profile"
-            className="h-14 gap-2"
-            onClick={() => router.push("/profile")}
-          >
-            <User
-              name={user.name}
-              description={"@" + user.username}
-              classNames={{
-                name: "text-default-600",
-                description: "text-default-500",
-              }}
-              avatarProps={{
-                size: "sm",
-                src: user.avatarImage,
-              }}
-            />
-          </DropdownItem>
+      <DropdownMenu aria-label="User menu">
+        {user ? (
+          <DropdownSection aria-label="Profile & Actions" showDivider>
+            <DropdownItem
+              isReadOnly
+              key="profile"
+              className="h-14 gap-2"
+              onClick={() => router.push("/profile")}
+            >
+              <User
+                name={user.name}
+                description={"@" + user.username}
+                classNames={{
+                  name: "text-default-600",
+                  description: "text-default-500",
+                }}
+                avatarProps={{
+                  size: "sm",
+                  src: user.avatarImage,
+                }}
+              />
+            </DropdownItem>
+          </DropdownSection>
+        ) : (
+          <DropdownSection aria-label="Profile & Actions" showDivider>
+            <DropdownItem
+              isReadOnly
+              key="profile"
+              className="h-14 gap-2"
+              onClick={() => router.push("/profile")}
+            >
+              <User
+                name={"Guest"}
+                classNames={{
+                  name: "text-default-600",
+                  description: "text-default-500",
+                }}
+                avatarProps={{
+                  size: "sm",
+                  src: "/images/avatar.jpg",
+                }}
+              />
+            </DropdownItem>
+          </DropdownSection>
+        )}
+        <DropdownSection aria-label="Profile & Actions" showDivider>
           <DropdownItem
             key="followed-comics"
             onClick={() => router.push("/")}
-            endContent={<Icon icon="mdi:heart" />}
+            startContent={<Icon icon="mdi:heart" />}
           >
             Followed Comics
           </DropdownItem>
           <DropdownItem
             key="setting"
             onClick={() => router.push("/settings")}
-            endContent={<Icon icon="uil:setting" />}
+            startContent={<Icon icon="uil:setting" />}
           >
             Settings
           </DropdownItem>
-          <DropdownItem
-            className="text-danger"
-            color="danger"
-            key="logout"
-            endContent={<Icon icon="material-symbols:logout" />}
-          >
-            Logout
-          </DropdownItem>
-        </DropdownMenu>
-      ) : (
-        <DropdownMenu aria-label="User menu">
-          <DropdownItem
-            key="setting"
-            onClick={() => router.push("/settings")}
-            endContent={<Icon icon="uil:setting" />}
-          >
-            Settings
-          </DropdownItem>
-          <DropdownItem
-            key="login"
-            onClick={() => router.push("/login")}
-            endContent={<Icon icon="material-symbols:login" />}
-          >
-            Login
-          </DropdownItem>
-          <DropdownItem
-            key="signup"
-            onClick={() => router.push("/signup")}
-            endContent={<Icon icon="mdi:register-outline" />}
-          >
-            Sign up
-          </DropdownItem>
-        </DropdownMenu>
-      )}
+        </DropdownSection>
+        {user ? (
+          <DropdownSection aria-label="Account & Actions">
+            <DropdownItem
+              className="text-danger"
+              color="danger"
+              key="logout"
+              startContent={<Icon icon="material-symbols:logout" />}
+              onClick={() => setUser(undefined)}
+            >
+              Logout
+            </DropdownItem>
+          </DropdownSection>
+        ) : (
+          <DropdownSection aria-label="Account & Actions">
+            <DropdownItem
+              key="login"
+              onClick={() => router.push("/login")}
+              startContent={<Icon icon="material-symbols:login" />}
+            >
+              Login
+            </DropdownItem>
+            <DropdownItem
+              key="signup"
+              onClick={() => router.push("/signup")}
+              startContent={<Icon icon="mdi:register-outline" />}
+            >
+              Sign up
+            </DropdownItem>
+          </DropdownSection>
+        )}
+      </DropdownMenu>
     </Dropdown>
   );
 }
