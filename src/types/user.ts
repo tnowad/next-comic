@@ -2,7 +2,7 @@ export interface UserPreview {
   id: string;
   name: string;
   avatarImage: string;
-  role: string;
+  roles: string[];
   username: string;
   email: string;
 }

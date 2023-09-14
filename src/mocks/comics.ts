@@ -125,7 +125,18 @@ export function createRandomUserPreview(): UserPreview {
     email: faker.internet.email(),
     username: faker.internet.userName(),
     avatarImage: catImages[0],
-    role: faker.helpers.arrayElement(["user", "admin"]),
+    roles: faker.helpers.arrayElements(
+      [
+        "Group Leader",
+        "Group Member",
+        "User",
+        "Author",
+        "Artist",
+        "Moderator",
+        "Admin",
+      ],
+      4,
+    ),
   };
 }
 
