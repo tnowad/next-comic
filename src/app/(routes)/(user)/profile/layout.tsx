@@ -1,4 +1,3 @@
-import ProfileSidebar from "@/components/ProfileSidebar";
 import { createRandomUserPreview } from "@/mocks/comics";
 import UserOptionsPage from "./@userOptions/page";
 import NextImage from "next/image";
@@ -36,8 +35,10 @@ export default function ProfileLayout({
             className="h-full w-full object-cover"
           />
         </div>
-        <div className="col-[1] row-[4]">{userOptions}</div>
-        <div className="col-[2] row-[3/span_3]">
+        <div className="col-[2] row-[3/span_2] md:col-[1] md:row-[4]">
+          {userOptions}
+        </div>
+        <div className="col-[1/span_2] row-[4] md:col-[2] md:row-[3/span_3]">
           <div className="text-3xl font-extrabold">{user.username}</div>
           {children}
         </div>
