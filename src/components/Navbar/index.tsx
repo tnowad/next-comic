@@ -83,7 +83,10 @@ export default function Navbar({ routes, mobileRoutes }: NavbarProps) {
         <NavbarItem>
           <Popover showArrow>
             <PopoverTrigger>
-              <Button className="rounded-full" isIconOnly>
+              <Button
+                className="rounded-full bg-foreground/20 hover:bg-foreground/10 dark:hover:bg-foreground/40"
+                isIconOnly
+              >
                 <Icon icon="ion:notifications" />
               </Button>
             </PopoverTrigger>
