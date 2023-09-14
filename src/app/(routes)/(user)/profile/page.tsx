@@ -5,7 +5,10 @@ import { User, UserPreview } from "@/types/user";
 import {
   Card,
   CardBody,
+  Chip,
+  Code,
   Progress,
+  Snippet,
   Tab,
   Tabs,
   Tooltip,
@@ -33,7 +36,28 @@ export default function Page() {
             <CardBody>
               <div>Fullname: {user?.name}</div>
               <div>Email: {user?.email}</div>
-              <div>{user?.roles.map((role) => <>{role.name}</>)}</div>
+              <div className="mt-2 flex space-x-2">
+                {user?.roles.map((role) => (
+                  <div key={role.id}>
+                    <Tooltip
+                      content={
+                        <div>
+                          {role.permissions.map((permission) => (
+                            <div key={permission.id}>{permission.name}</div>
+                          ))}
+                        </div>
+                      }
+                    >
+                      <Chip color="primary" variant="dot">
+                        {role.name}
+                      </Chip>
+                    </Tooltip>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-2">
+                User ID: <Snippet hideSymbol>{user?.id}</Snippet>
+              </div>
               <Progress
                 label={
                   <p>
@@ -45,11 +69,14 @@ export default function Page() {
                 }
                 size="sm"
                 value={4000}
+                className="mt-2"
                 maxValue={10000}
                 color="danger"
                 formatOptions={{ style: "currency", currency: "EXP" }}
                 showValueLabel={true}
               />
+              <div>Groups:</div>
+              <div>Uploads:</div>
             </CardBody>
           </Card>
         </Tab>
