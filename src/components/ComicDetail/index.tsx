@@ -1,6 +1,5 @@
 "use client";
 
-import NextImage from "@/components/NextImage";
 import { ComicPreview } from "@/types/comic";
 import { formatNumber } from "@/utils/number";
 import { Icon } from "@iconify/react";
@@ -20,6 +19,7 @@ import {
 import NextLink from "next/link";
 import { useRouter } from "next/navigation";
 import { format } from "timeago.js";
+import UnoptimizedNextImage from "../UnoptimizedNextImage";
 
 interface ComicDetailProps {
   comic: ComicPreview;
@@ -77,7 +77,7 @@ export default function ComicDetail({ comic }: ComicDetailProps) {
       <div className="flex grid-cols-12 flex-col items-center md:grid md:items-start">
         <div className="col-span-4">
           <Image
-            as={NextImage}
+            as={UnoptimizedNextImage}
             className="z-0 h-[350px] w-full object-cover"
             width={250}
             height={300}
@@ -153,7 +153,7 @@ export default function ComicDetail({ comic }: ComicDetailProps) {
           <div key={character.id}>
             <div>
               <Image
-                as={NextImage}
+                as={UnoptimizedNextImage}
                 className="z-0 h-[350px] w-full object-cover"
                 width={250}
                 height={300}
