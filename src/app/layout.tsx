@@ -1,8 +1,9 @@
-import "./globals.css";
+import siteConfig from "@/configs/site";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import "./globals.css";
 import Providers from "./providers";
-import siteConfig from "@/configs/site";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -44,6 +45,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning dir="ltr" lang="en">
       <body className={inter.className}>
+        <NextTopLoader color="#2299DD" height={1} />
         <Providers>{children}</Providers>
       </body>
     </html>

@@ -1,13 +1,13 @@
 "use client";
 
 import { Chapter, Comic } from "@/types/comic";
-import { Button, Divider, Link, Select, SelectItem } from "@nextui-org/react";
-import NextLink from "next/link";
-import { format } from "timeago.js";
 import { Icon } from "@iconify/react";
-import { useInView } from "react-hook-inview";
+import { Button, Divider, Link, Select, SelectItem } from "@nextui-org/react";
 import clsx from "clsx";
+import NextLink from "next/link";
 import { useState } from "react";
+import { useInView } from "react-hook-inview";
+import { format } from "timeago.js";
 
 interface ChapterReadDetailProps {
   comic: Comic;

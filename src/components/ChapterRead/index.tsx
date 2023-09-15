@@ -1,8 +1,8 @@
 "use client";
 
 import { Chapter } from "@/types/comic";
-import NextImage from "next/image";
 import { Image } from "@nextui-org/react";
+import NextImage from "next/image";
 interface ChapterReadProps {
   chapter: Chapter;
 }

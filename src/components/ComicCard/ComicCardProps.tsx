@@ -1,9 +1,9 @@
-import { Comic } from "@/types/comic";
+import { ComicPreview } from "@/types/comic";
 
 export default interface ComicCardProps {
   auto?: boolean;
   horizon?: boolean;
-  comic?: Comic;
+  comic?: ComicPreview;
   maxTitleLength?: number;
   hideChapters?: boolean;
   hideDetail?: boolean;
