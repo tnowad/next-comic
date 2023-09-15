@@ -1,6 +1,5 @@
+import NextImage from "@/components/NextImage";
 import { createRandomUserPreview } from "@/mocks/comics";
-import UserOptionsPage from "./@userOptions/page";
-import NextImage from "next/image";
 
 interface ProfileLayoutProps {
   userOptions: React.ReactNode;
@@ -10,7 +9,7 @@ function getCurrentUser() {
   return createRandomUserPreview();
 }
 export default function ProfileLayout({
-  userOptions = <UserOptionsPage />,
+  userOptions,
   children,
 }: ProfileLayoutProps) {
   const user = getCurrentUser();

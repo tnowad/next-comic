@@ -1,5 +1,6 @@
 "use client";
 
+import NextImage from "@/components/NextImage";
 import { ComicPreview } from "@/types/comic";
 import { formatNumber } from "@/utils/number";
 import { Icon } from "@iconify/react";
@@ -16,7 +17,6 @@ import {
   TableRow,
   Tooltip,
 } from "@nextui-org/react";
-import NextImage from "next/image";
 import NextLink from "next/link";
 import { useRouter } from "next/navigation";
 import { format } from "timeago.js";

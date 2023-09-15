@@ -1,6 +1,6 @@
+import NextImage from "@/components/NextImage";
 import { ComicPreview } from "@/types/comic";
 import { Image, Link } from "@nextui-org/react";
-import NextImage from "next/image";
 import NextLink from "next/link";
 import { format } from "timeago.js";
 

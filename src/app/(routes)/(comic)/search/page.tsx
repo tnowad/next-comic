@@ -1,3 +1,7 @@
 export default function Page() {
-  return <div></div>;
+  return (
+    <div>
+      <h2>Search</h2>
+    </div>
+  );
 }
