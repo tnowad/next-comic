@@ -36,7 +36,7 @@ export default function Page() {
             <CardBody>
               <div>Fullname: {user?.name}</div>
               <div>Email: {user?.email}</div>
-              <div className="mt-2 flex space-x-2">
+              <div className="mt-2 inline-flex flex-wrap gap-y-1 space-x-2">
                 {user?.roles.map((role) => (
                   <div key={role.id}>
                     <Tooltip
@@ -56,7 +56,16 @@ export default function Page() {
                 ))}
               </div>
               <div className="mt-2">
-                User ID: <Snippet hideSymbol>{user?.id}</Snippet>
+                User ID:{" "}
+                <Snippet
+                  className="max-w-[200px]"
+                  classNames={{
+                    pre: "overflow-x-hidden",
+                  }}
+                  hideSymbol
+                >
+                  {user?.id}
+                </Snippet>
               </div>
               <Progress
                 label={
