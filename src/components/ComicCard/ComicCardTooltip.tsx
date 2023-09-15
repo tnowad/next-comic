@@ -1,13 +1,13 @@
-import { Comic } from "@/types/comic";
-import { Link, Image } from "@nextui-org/react";
-import NextLink from "next/link";
-import NextImage from "next/image";
-import React from "react";
+import { ComicPreview } from "@/types/comic";
 import { formatNumber } from "@/utils/number";
+import { Image, Link } from "@nextui-org/react";
+import NextImage from "next/image";
+import NextLink from "next/link";
+import React from "react";
 import { format } from "timeago.js";
 
 interface ComicCardTooltipProps {
-  comic?: Comic;
+  comic?: ComicPreview;
 }
 
 export default function ComicCardTooltip({ comic }: ComicCardTooltipProps) {

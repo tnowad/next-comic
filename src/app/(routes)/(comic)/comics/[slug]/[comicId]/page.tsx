@@ -2,14 +2,14 @@ import ComicDetail from "@/components/ComicDetail";
 import FollowingComic from "@/components/FollowingComic";
 import LeaderBoardComic from "@/components/LeaderBoardComic";
 import ReadingHistoryComic from "@/components/ReadingHistoryComic";
-import { createRandomComic } from "@/mocks/comics";
+import { createRandomComicPreview } from "@/mocks/comics";
 
-async function getComic() {
-  return createRandomComic();
+async function getComicPreview() {
+  return createRandomComicPreview();
 }
 
 export default async function Page() {
-  const comic = await getComic();
+  const comic = await getComicPreview();
 
   return (
     <section className="container mx-auto">

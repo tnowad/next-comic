@@ -1,10 +1,10 @@
 import { Metadata } from "next";
-import Login from "../components/Login";
+import Signup from "../components/Signup";
 
 export const metadata: Metadata = {
-  title: "Login",
+  title: "Sign up",
 };
 
 export default function Page() {
-  return <Login />;
+  return <Signup />;
 }

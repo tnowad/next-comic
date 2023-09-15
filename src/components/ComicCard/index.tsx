@@ -1,7 +1,7 @@
 "use client";
 
-import NextLink from "next/link";
-import NextImage from "next/image";
+import { formatNumber } from "@/utils/number";
+import { Icon } from "@iconify/react";
 import {
   Card,
   CardBody,
@@ -10,13 +10,12 @@ import {
   Link,
   Tooltip,
 } from "@nextui-org/react";
-import { Icon } from "@iconify/react";
-import { formatNumber } from "@/utils/number";
+import clsx from "clsx";
+import NextImage from "next/image";
+import NextLink from "next/link";
 import { format } from "timeago.js";
-import React from "react";
 import ComicCardProps from "./ComicCardProps";
 import ComicCardTooltip from "./ComicCardTooltip";
-import clsx from "clsx";
 
 export default function ComicCard({
   comic,

@@ -1,7 +1,6 @@
-import { IconSvgProps } from "@/types/svg";
-import SmallLogo from "./SmallLogo";
 import LargeLogo from "./LargeLogo";
 import { LogoProps } from "./LogoProps";
+import SmallLogo from "./SmallLogo";
 
 export default function Logo({ auto, small, ...props }: LogoProps) {
   if (auto) {

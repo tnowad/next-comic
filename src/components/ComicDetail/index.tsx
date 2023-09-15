@@ -1,28 +1,28 @@
 "use client";
 
-import { Comic } from "@/types/comic";
-import { format } from "timeago.js";
+import { ComicPreview } from "@/types/comic";
+import { formatNumber } from "@/utils/number";
+import { Icon } from "@iconify/react";
 import {
   Button,
+  Divider,
   Image,
   Link,
-  Tooltip,
-  Divider,
   Table,
-  TableHeader,
-  TableColumn,
   TableBody,
-  TableRow,
   TableCell,
+  TableColumn,
+  TableHeader,
+  TableRow,
+  Tooltip,
 } from "@nextui-org/react";
-import NextLink from "next/link";
 import NextImage from "next/image";
-import { Icon } from "@iconify/react";
-import { formatNumber } from "@/utils/number";
+import NextLink from "next/link";
 import { useRouter } from "next/navigation";
+import { format } from "timeago.js";
 
 interface ComicDetailProps {
-  comic: Comic;
+  comic: ComicPreview;
 }
 
 export default function ComicDetail({ comic }: ComicDetailProps) {

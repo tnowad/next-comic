@@ -2,7 +2,7 @@
 
 import { createRandomComic } from "@/mocks/comics";
 import { Comic } from "@/types/comic";
-import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
+import { Card, CardBody, Tab, Tabs } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import ComicCardHorizon from "../ComicCard/ComicCardHorizon";
 

@@ -1,19 +1,19 @@
 "use client";
 
 import ComicList from "@/components/ComicList";
-import { createRandomComic } from "@/mocks/comics";
-import { Comic } from "@/types/comic";
-import { Button, Pagination } from "@nextui-org/react";
-import { useEffect, useState } from "react";
+import { createRandomComicPreview } from "@/mocks/comics";
+import { ComicPreview } from "@/types/comic";
 import { Icon } from "@iconify/react";
+import { Button, Pagination } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 async function getAllComic() {
-  return Array.from({ length: 4 * 3 * 2 * 2 }).map(createRandomComic);
+  return Array.from({ length: 3 * 4 * 5 }).map(createRandomComicPreview);
 }
 
 export default function RecentlyUpdateComics() {
-  const [comics, setComics] = useState<Comic[]>();
+  const [comics, setComics] = useState<ComicPreview[]>();
   const router = useRouter();
 
   useEffect(() => {

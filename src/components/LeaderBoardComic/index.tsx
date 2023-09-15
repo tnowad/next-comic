@@ -1,25 +1,25 @@
 "use client";
 
-import { createRandomComic } from "@/mocks/comics";
-import { Comic } from "@/types/comic";
-import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
+import { createRandomComicPreview } from "@/mocks/comics";
+import { ComicPreview } from "@/types/comic";
+import { Card, CardBody, Tab, Tabs } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import ComicCardHorizon from "../ComicCard/ComicCardHorizon";
 
-interface LeaderBoardComicProps { }
+interface LeaderBoardComicProps {}
 async function getTopViewComicByMonth() {
-  return Array.from({ length: 5 }).map(createRandomComic);
+  return Array.from({ length: 5 }).map(createRandomComicPreview);
 }
 async function getTopViewComicByWeek() {
-  return Array.from({ length: 5 }).map(createRandomComic);
+  return Array.from({ length: 5 }).map(createRandomComicPreview);
 }
 async function getTopViewComicByDate() {
-  return Array.from({ length: 5 }).map(createRandomComic);
+  return Array.from({ length: 5 }).map(createRandomComicPreview);
 }
-export default function LeaderBoardComic({ }: LeaderBoardComicProps) {
-  const [topMonthComics, setTopMonthComics] = useState<Comic[]>();
-  const [topWeekComics, setTopWeekComics] = useState<Comic[]>();
-  const [topDateComics, setTopDateComics] = useState<Comic[]>();
+export default function LeaderBoardComic({}: LeaderBoardComicProps) {
+  const [topMonthComics, setTopMonthComics] = useState<ComicPreview[]>();
+  const [topWeekComics, setTopWeekComics] = useState<ComicPreview[]>();
+  const [topDateComics, setTopDateComics] = useState<ComicPreview[]>();
 
   useEffect(() => {
     const fetchTopMonthComics = async () => {
