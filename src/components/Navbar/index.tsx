@@ -77,7 +77,7 @@ export default function Navbar({ routes, mobileRoutes }: NavbarProps) {
         </NavbarBrand>
         <NavbarItem className="w-full"></NavbarItem>
         <NavbarItem className="hidden lg:flex">{searchButton}</NavbarItem>
-        <NavbarItem>
+        <NavbarItem className="hidden sm:flex">
           <ThemeSwitcher />
         </NavbarItem>
         <NavbarItem>
