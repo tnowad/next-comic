@@ -5,18 +5,24 @@ import NextLink from "next/link";
 
 export default function Signup() {
   return (
-    <form className="flex h-[300px] flex-col gap-4">
+    <form className="flex h-[350px] flex-col gap-4">
       <Input
         isRequired
         label="Name"
         placeholder="Enter your name"
-        type="password"
+        type="text"
       />
       <Input
         isRequired
         label="Email"
         placeholder="Enter your email"
         type="email"
+      />
+      <Input
+        isRequired
+        label="Username"
+        placeholder="Enter your username"
+        type="text"
       />
       <Input
         isRequired
