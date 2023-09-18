@@ -1,0 +1,98 @@
+"use client";
+
+import { Button, Card, CardBody, Input, Tab, Tabs } from "@nextui-org/react";
+import { Icon } from "@iconify/react";
+import { KeyboardEvent, useEffect, useState } from "react";
+import ComicList from "@/components/ComicList";
+import {
+  createRandomAuthorPreview,
+  createRandomComicPreview,
+  createRandomUserPreview,
+} from "@/mocks/comics";
+import { AuthorPreview, ComicPreview, GroupPreview } from "@/types/comic";
+import { UserPreview } from "@/types/user";
+
+async function getSearchedComics() {
+  return Array.from({ length: 44 }).map(createRandomComicPreview);
+}
+
+async function getSearchedUsers() {
+  return Array.from({ length: 44 }).map(createRandomUserPreview);
+}
+
+async function getSearchedGroups(): Promise<GroupPreview[]> {
+  return [];
+}
+
+async function getSearchedAuthors() {
+  return Array.from({ length: 44 }).map(createRandomAuthorPreview);
+}
+
+export default function Page() {
+  const [value, setValue] = useState<string>();
+  const [comics, setComics] = useState<ComicPreview[]>([]);
+  const [groups, setGroups] = useState<GroupPreview[]>([]);
+  const [users, setUsers] = useState<UserPreview[]>([]);
+  const [authors, setAuthors] = useState<AuthorPreview[]>([]);
+
+  useEffect(() => { }, [value]);
+  const fetchComics = async () => {
+    const comics = await getSearchedComics();
+    setComics(comics);
+  };
+
+  const handleSearchKeyDown = (event: KeyboardEvent) => {
+    if (event.key === "Enter") {
+      fetchComics();
+    }
+  };
+
+  return (
+    <div>
+      <h2 className="text-3xl">Search</h2>
+      <div>
+        <Input
+          startContent={<Icon icon="material-symbols:search" />}
+          type="search"
+          value={value}
+          onChange={(event) => setValue(event.target.value)}
+          placeholder="Search"
+          onKeyDown={handleSearchKeyDown}
+        />
+      </div>
+      <div className="mt-2">
+        <Tabs>
+          <Tab key="all" title="All">
+            <Card>
+              <CardBody>
+                <ComicList comics={comics} />
+              </CardBody>
+            </Card>
+          </Tab>
+          <Tab key="comics" title="Comics">
+            <Card>
+              <CardBody>
+                <ComicList comics={comics} />
+              </CardBody>
+            </Card>
+          </Tab>
+          <Tab key="groups" title="Groups">
+            <Card>
+              <CardBody>{groups.length}</CardBody>
+            </Card>
+          </Tab>
+          <Tab key="users" title="Users">
+            <Card>
+              <CardBody>{users.length}</CardBody>
+            </Card>
+          </Tab>
+          <Tab key="authors" title="Authors">
+            <Card>
+              <CardBody>{authors.length}</CardBody>
+            </Card>
+          </Tab>
+        </Tabs>
+      </div>
+    </div>
+  );
+}
