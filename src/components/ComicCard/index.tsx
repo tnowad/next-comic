@@ -21,6 +21,7 @@ export default function ComicCard({
   comic,
   hideChapters,
   maxTitleLength = 50,
+  horizon,
 }: ComicCardProps) {
   if (!comic) {
     return null;

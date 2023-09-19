@@ -29,21 +29,42 @@ async function getSearchedAuthors() {
 }
 
 export default function Page() {
-  const [value, setValue] = useState<string>();
+  const [keyword, setKeyword] = useState<string>();
   const [comics, setComics] = useState<ComicPreview[]>([]);
   const [groups, setGroups] = useState<GroupPreview[]>([]);
   const [users, setUsers] = useState<UserPreview[]>([]);
   const [authors, setAuthors] = useState<AuthorPreview[]>([]);
+  const [tabSelectedKey, setTabSelectedKey] = useState<string | number>(
+    "comics",
+  );
 
-  useEffect(() => { }, [value]);
+  useEffect(() => { }, [keyword]);
+
   const fetchComics = async () => {
     const comics = await getSearchedComics();
     setComics(comics);
   };
 
+  const fetchGroups = async () => {
+    const groups = await getSearchedGroups();
+    setGroups(groups);
+  };
+
+  const fetchUsers = async () => {
+    const uers = await getSearchedUsers();
+    setUsers(uers);
+  };
+
+  const fetchAuthors = async () => {
+    const authors = await getSearchedAuthors();
+    setAuthors(authors);
+  };
+
+  const handleSearch = () => { };
+
   const handleSearchKeyDown = (event: KeyboardEvent) => {
     if (event.key === "Enter") {
-      fetchComics();
+      handleSearch();
     }
   };
 
@@ -54,21 +75,17 @@ export default function Page() {
         <Input
           startContent={<Icon icon="material-symbols:search" />}
           type="search"
-          value={value}
-          onChange={(event) => setValue(event.target.value)}
+          value={keyword}
+          onChange={(event) => setKeyword(event.target.value)}
           placeholder="Search"
           onKeyDown={handleSearchKeyDown}
         />
       </div>
       <div className="mt-2">
-        <Tabs>
-          <Tab key="all" title="All">
-            <Card>
-              <CardBody>
-                <ComicList comics={comics} />
-              </CardBody>
-            </Card>
-          </Tab>
+        <Tabs
+          selectedKey={tabSelectedKey}
+          onSelectionChange={(event) => setTabSelectedKey(event)}
+        >
           <Tab key="comics" title="Comics">
             <Card>
               <CardBody>
