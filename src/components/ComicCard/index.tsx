@@ -1,5 +1,6 @@
 "use client";
 
+import NextImage from "@/components/NextImage";
 import { formatNumber } from "@/utils/number";
 import { Icon } from "@iconify/react";
 import {
@@ -11,7 +12,6 @@ import {
   Tooltip,
 } from "@nextui-org/react";
 import clsx from "clsx";
-import NextImage from "next/image";
 import NextLink from "next/link";
 import { format } from "timeago.js";
 import ComicCardProps from "./ComicCardProps";
@@ -21,6 +21,7 @@ export default function ComicCard({
   comic,
   hideChapters,
   maxTitleLength = 50,
+  horizon,
 }: ComicCardProps) {
   if (!comic) {
     return null;

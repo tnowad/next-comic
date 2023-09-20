@@ -80,3 +80,13 @@ export interface Comment {
   contents: string;
   user: UserPreview;
 }
+
+export interface GroupPreview {
+  id: string;
+  name: string;
+  avatarImage: string;
+}
+
+export interface Group extends GroupPreview {
+  members?: UserPreview[];
+}

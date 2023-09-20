@@ -2,7 +2,8 @@
 
 import { Chapter } from "@/types/comic";
 import { Image } from "@nextui-org/react";
-import NextImage from "next/image";
+import UnoptimizedNextImage from "../UnoptimizedNextImage";
+
 interface ChapterReadProps {
   chapter: Chapter;
 }
@@ -13,8 +14,9 @@ export default function ChapterRead({ chapter }: ChapterReadProps) {
       {chapter.images.map((image) => (
         <div key={image}>
           <Image
-            as={NextImage}
+            as={UnoptimizedNextImage}
             src={image}
+            className="rounded-none"
             height={1200}
             width={1200}
             removeWrapper
