@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: "/manifest.json",
+  metadataBase: new URL("https://nextcomic.helloworld.id.vn"),
   twitter: siteConfig.twitter,
   openGraph: siteConfig.openGraph,
   authors: [
