@@ -84,7 +84,7 @@ export default function Page() {
       <div className="mt-2">
         <Tabs
           selectedKey={tabSelectedKey}
-          onSelectionChange={(event) => setTabSelectedKey(event)}
+          onSelectionChange={(event) => setTabSelectedKey(event as string)}
         >
           <Tab key="comics" title="Comics">
             <Card>
