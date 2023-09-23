@@ -1,6 +1,9 @@
 import ChapterRead from "@/components/ChapterRead";
 import ChapterReadDetail from "@/components/ChapterReadDetail";
 import { createRandomChapter, createRandomComic } from "@/mocks/comics";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {};
 
 async function getChapter() {
   return createRandomChapter();
@@ -18,6 +21,8 @@ export default async function Page() {
   const chapter = await getChapter();
   const comic = await getComic();
   comic.chapters = await getChapters();
+
+  metadata.title = comic.title.toUpperCase() + " - " + chapter.title;
 
   return (
     <>
