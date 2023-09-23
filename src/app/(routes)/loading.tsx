@@ -1,4 +1,3 @@
-import NextImage from "@/components/NextImage";
 import UnoptimizedNextImage from "@/components/UnoptimizedNextImage";
 
 export default function Default() {
@@ -9,6 +8,7 @@ export default function Default() {
         height={370}
         width={300}
         alt="loading"
+        aria-label="loading cat"
       />
     </div>
   );
