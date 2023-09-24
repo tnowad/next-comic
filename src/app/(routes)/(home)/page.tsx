@@ -2,6 +2,11 @@ import FollowingComic from "@/components/FollowingComic";
 import LeaderBoardComic from "@/components/LeaderBoardComic";
 import ReadingHistoryComic from "@/components/ReadingHistoryComic";
 import RecentlyUpdateComics from "@/components/RecentlyUpdateComics";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home",
+};
 
 export default function Page() {
   return (

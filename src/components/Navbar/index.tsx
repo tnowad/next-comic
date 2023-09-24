@@ -12,10 +12,13 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownTrigger,
+  Link,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
   NavbarMenu,
+  NavbarMenuItem,
+  NavbarMenuToggle,
   Navbar as NextUINavbar,
   Popover,
   PopoverContent,
@@ -55,6 +58,23 @@ export default function Navbar({ routes, mobileRoutes }: NavbarProps) {
     </Button>
   );
 
+  const routeLinks = (
+    <>
+      {routes.map((route) => (
+        <div key={route.key}>
+          <Link
+            color="foreground"
+            className="mr-4 uppercase"
+            href={route.path ?? ""}
+            as={NextLink}
+          >
+            {route.title}
+          </Link>
+        </div>
+      ))}
+    </>
+  );
+
   return (
     <NextUINavbar
       ref={ref}
@@ -75,8 +95,11 @@ export default function Navbar({ routes, mobileRoutes }: NavbarProps) {
             <LargeLogo className="h-5 md:h-6" />
           </NextLink>
         </NavbarBrand>
+        <NavbarMenuItem className="hidden flex-row lg:flex">
+          {routeLinks}
+        </NavbarMenuItem>
         <NavbarItem className="w-full"></NavbarItem>
-        <NavbarItem className="hidden lg:flex">{searchButton}</NavbarItem>
+        <NavbarItem className="hidden sm:flex">{searchButton}</NavbarItem>
         <NavbarItem className="hidden sm:flex">
           <ThemeSwitcher />
         </NavbarItem>
@@ -98,8 +121,20 @@ export default function Navbar({ routes, mobileRoutes }: NavbarProps) {
         <NavbarItem>
           <UserNavbarDropdown />
         </NavbarItem>
+        <NavbarMenuToggle
+          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+          className="sm:hidden"
+        />
       </NavbarContent>
-      <NavbarMenu></NavbarMenu>
+      <NavbarMenu>
+        {mobileRoutes.map((item, index) => (
+          <NavbarMenuItem key={`${item}-${index}`}>
+            <Link className="w-full" href="#" size="lg">
+              {item.title}
+            </Link>
+          </NavbarMenuItem>
+        ))}
+      </NavbarMenu>
     </NextUINavbar>
   );
 }
