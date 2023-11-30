@@ -1,4 +1,4 @@
-import UnoptimizedNextImage from "@/components/UnoptimizedNextImage";
+import UnoptimizedNextImage from "@/components/unoptimized-next-image";
 
 export default function Default() {
   return (

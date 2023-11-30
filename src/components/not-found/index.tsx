@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import UnoptimizedNextImage from "@/components/UnoptimizedNextImage";
+import UnoptimizedNextImage from "@/components/unoptimized-next-image";
 import NextLink from "next/link";
 import { useRouter } from "next/navigation";
 import { Link } from "@nextui-org/react";

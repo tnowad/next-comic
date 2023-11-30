@@ -2,7 +2,7 @@
 
 import { Chapter } from "@/types/comic";
 import { Image } from "@nextui-org/react";
-import UnoptimizedNextImage from "../UnoptimizedNextImage";
+import UnoptimizedNextImage from "../unoptimized-next-image";
 
 interface ChapterReadProps {
   chapter: Chapter;

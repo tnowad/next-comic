@@ -1,5 +1,5 @@
-import ChapterRead from "@/components/ChapterRead";
-import ChapterReadDetail from "@/components/ChapterReadDetail";
+import ChapterRead from "@/components/chapter-read";
+import ChapterReadDetail from "@/components/chapter-read-detail";
 import { createRandomChapter, createRandomComic } from "@/mocks/comics";
 import { Metadata } from "next";
 

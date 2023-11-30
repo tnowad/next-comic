@@ -1,6 +1,6 @@
 "use client";
 
-import NextImage from "@/components/NextImage";
+import NextImage from "@/components/next-image";
 import { formatNumber } from "@/utils/number";
 import { Icon } from "@iconify/react";
 import {

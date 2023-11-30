@@ -1,4 +1,4 @@
-import NextImage from "@/components/NextImage";
+import NextImage from "@/components/next-image";
 import { createRandomUserPreview } from "@/mocks/comics";
 
 interface ProfileLayoutProps {

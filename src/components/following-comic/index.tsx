@@ -4,7 +4,7 @@ import { createRandomComic } from "@/mocks/comics";
 import { Comic } from "@/types/comic";
 import { Card, CardBody, Tab, Tabs } from "@nextui-org/react";
 import { useEffect, useState } from "react";
-import ComicCardHorizon from "../ComicCard/ComicCardHorizon";
+import ComicCardHorizon from "../comic-card/ComicCardHorizon";
 
 interface LeaderBoardComicProps {}
 async function getFollowedComics() {

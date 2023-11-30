@@ -1,4 +1,4 @@
-import NextImage from "@/components/NextImage";
+import NextImage from "@/components/next-image";
 import { ComicPreview } from "@/types/comic";
 import { formatNumber } from "@/utils/number";
 import { Image, Link } from "@nextui-org/react";

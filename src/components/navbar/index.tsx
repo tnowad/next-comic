@@ -1,7 +1,7 @@
 "use client";
-import LargeLogo from "@/components/Logo/LargeLogo";
-import SmallLogo from "@/components/Logo/SmallLogo";
-import ThemeSwitcher from "@/components/ThemeSwitcher";
+import LargeLogo from "@/components/logo/LargeLogo";
+import SmallLogo from "@/components/logo/SmallLogo";
+import ThemeSwitcher from "@/components/theme-switcher";
 import { Route } from "@/types/page";
 import { faker } from "@faker-js/faker";
 import { Icon } from "@iconify/react";
@@ -28,9 +28,9 @@ import {
 import clsx from "clsx";
 import NextLink from "next/link";
 import { useRef, useState } from "react";
-import LeaderBoardComic from "../LeaderBoardComic";
+import LeaderBoardComic from "../leader-board-comic";
 import { useRouter } from "next/navigation";
-import UserNavbarDropdown from "../UserNavbarDropdown";
+import UserNavbarDropdown from "../user-navbar-dropdown";
 
 interface NavbarProps {
   routes: Route[];

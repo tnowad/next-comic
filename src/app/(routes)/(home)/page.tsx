@@ -1,7 +1,7 @@
-import FollowingComic from "@/components/FollowingComic";
-import LeaderBoardComic from "@/components/LeaderBoardComic";
-import ReadingHistoryComic from "@/components/ReadingHistoryComic";
-import RecentlyUpdateComics from "@/components/RecentlyUpdateComics";
+import FollowingComic from "@/components/following-comic";
+import LeaderBoardComic from "@/components/leader-board-comic";
+import ReadingHistoryComic from "@/components/reading-history-comic";
+import RecentlyUpdateComics from "@/components/recently-update-comics";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

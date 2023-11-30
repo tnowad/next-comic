@@ -19,7 +19,7 @@ import {
 import NextLink from "next/link";
 import { useRouter } from "next/navigation";
 import { format } from "timeago.js";
-import UnoptimizedNextImage from "../UnoptimizedNextImage";
+import UnoptimizedNextImage from "../unoptimized-next-image";
 
 interface ComicDetailProps {
   comic: ComicPreview;

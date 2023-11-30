@@ -1,7 +1,7 @@
-import ComicDetail from "@/components/ComicDetail";
-import FollowingComic from "@/components/FollowingComic";
-import LeaderBoardComic from "@/components/LeaderBoardComic";
-import ReadingHistoryComic from "@/components/ReadingHistoryComic";
+import ComicDetail from "@/components/comic-detail";
+import FollowingComic from "@/components/following-comic";
+import LeaderBoardComic from "@/components/leader-board-comic";
+import ReadingHistoryComic from "@/components/reading-history-comic";
 import { createRandomComicPreview } from "@/mocks/comics";
 import { Metadata } from "next";
 
