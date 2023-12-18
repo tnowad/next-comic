@@ -1,12 +1,12 @@
 "use client";
 
-import ComicList from "@/components/ComicList";
 import { createRandomComicPreview } from "@/mocks/comics";
 import { ComicPreview } from "@/types/comic";
 import { Icon } from "@iconify/react";
 import { Button, Pagination } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import ComicList from "../comic-list";
 
 async function getAllComic() {
   return Array.from({ length: 3 * 4 * 5 }).map(createRandomComicPreview);
